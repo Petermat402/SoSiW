@@ -9,8 +9,6 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  language = {};
-
   public parseJSON(jsonPath: string) {
     return this.httpClient.get(jsonPath);
   }

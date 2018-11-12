@@ -1,9 +1,11 @@
+@import 'themes';
+html, body{
+  height: 100%
+}
 body{
-  background-image: radial-gradient(circle, #a60505, #800117, #580a1b, #2f0d15, #210404,#000000);
-  background-position: center center;
-  background-repeat:  no-repeat;
-  background-attachment: fixed;
-  background-size:  cover;
+  overflow: hidden;
 }
 
-
+.height-100{
+  height: 100%;
+}
