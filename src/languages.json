@@ -1,0 +1,51 @@
+{
+  "languages":[{
+    "id": 1,
+    "value": "English",
+    "short": "EN",
+    "code": "001",
+    "messages":{
+      "common":{
+        "changeThemeTooltip": "Change theme",
+        "languageWord": "Language"
+      },
+      "login":{
+        "enterLogin" : "Enter your login",
+        "enterPassword": "Enter your password"
+      }
+    }
+  },
+    {
+      "id": 2,
+      "value": "Polski",
+      "short": "PL",
+      "code": "002",
+      "messages":{
+        "common":{
+          "changeThemeTooltip": "Zmień motyw",
+          "languageWord": "Język"
+        },
+        "login":{
+          "enterLogin" : "Wprowadź login",
+          "enterPassword": "Wprowadź hasło"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "value": "Deutsh",
+      "short": "DT",
+      "code": "003",
+      "messages":{
+        "common":{
+          "changeThemeTooltip": "Thema wechseln",
+          "languageWord": "Sprache"
+        },
+        "login":{
+          "enterLogin" : "Geben Sie Ihren Login ein",
+          "enterPassword": "Geben Sie Ihr Passwort ein"
+        }
+      }
+    }]
+
+}
