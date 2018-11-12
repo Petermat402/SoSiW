@@ -28,11 +28,9 @@
        fxFlexAlign="end">
     <mat-form-field style="position: absolute; bottom: 0; right: 0">
       <mat-select placeholder="{{messages.common.languageWord}}">
-        <mat-option *ngFor="let language of languagesList">{{language.short}}</mat-option>
+        <mat-option *ngFor="let language of languagesShorts" (click)="changeLanguage(language)">{{language}}</mat-option>
       </mat-select>
     </mat-form-field>
-
-
   </div>
 </div>
 

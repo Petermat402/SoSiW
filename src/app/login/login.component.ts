@@ -1,9 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ThemeService} from '../services/theme.service';
-import {ApiService} from '../services/api.service';
-import * as ln from '../../languages.json';
 import {LanguageService} from '../services/language.service';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +16,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
   darkTheme = this.themeService.isDarkTheme;
   hide = true;
   messages;
-  languagesList;
+  languagesShorts;
   ngOnInit() {
     this.messages = this.languageService.getCurrentLanguage().messages;
-    this.languagesList = this.languageService.getLanguagesList();
+    this.languagesShorts = this.languageService.getAllLanguagesShorts();
   }
 
   ngAfterViewInit() {
@@ -34,8 +31,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       .backgroundImage = 'radial-gradient(circle, #a60505, #800117, #580a1b, #2f0d15, #210404, #000000)';
   }
 
-  changeLanguage(languageShort){
-
+  changeLanguage(languageShort) {
+    this.languageService.setCurrentLanguageByShort(languageShort);
+    this.messages = this.languageService.getCurrentLanguage().messages;
   }
 
   switchTheme() {

@@ -25,7 +25,18 @@ export class LanguageService {
   public getLanguagesList() {
     return this.languagesList;
   }
-  public setCurrentLanguageByShort(languageShort) {
 
+  public getAllLanguagesShorts() {
+    const shorts = [];
+    _.forEach(this.languagesList, language => {
+      shorts.push(language.short);
+    });
+    return shorts;
+  }
+  public setCurrentLanguageByShort(languageShort) {
+    const newLanguage = _.filter(this.languagesList, language => {
+      return language.short === languageShort;
+    });
+    this.currentLanguage = newLanguage[0];
   }
 }
