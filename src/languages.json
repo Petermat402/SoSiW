@@ -11,7 +11,9 @@
       },
       "login":{
         "enterLogin" : "Enter your login",
-        "enterPassword": "Enter your password"
+        "enterPassword": "Enter your password",
+        "forgotPasswordTooltip": "Forgot password or login?",
+        "logInTooltip": "Log in"
       }
     }
   },
@@ -27,7 +29,9 @@
         },
         "login":{
           "enterLogin" : "Wprowadź login",
-          "enterPassword": "Wprowadź hasło"
+          "enterPassword": "Wprowadź hasło",
+          "forgotPasswordTooltip": "Zapomniałeś hasła, albo loginu?",
+          "logInTooltip": "Zaloguj się"
         }
       }
     },
@@ -43,7 +47,9 @@
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
-          "enterPassword": "Geben Sie Ihr Passwort ein"
+          "enterPassword": "Geben Sie Ihr Passwort ein",
+          "forgotPasswordTooltip": "Passwort vergessen oder einloggen?",
+          "logInTooltip": "Einloggen"
         }
       }
     }]

@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {ThemeService} from '../services/theme.service';
 import {LanguageService} from '../services/language.service';
+import {LoginService} from '../services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +13,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     private elementRef: ElementRef,
     private themeService: ThemeService,
-    private languageService: LanguageService
-  ) {}
+    private languageService: LanguageService,
+    private loginService: LoginService,
+    private router: Router
+  ) {
+  }
+
   darkTheme = this.themeService.isDarkTheme;
   hide = true;
   messages;
   languagesShorts;
+
   ngOnInit() {
     this.messages = this.languageService.getCurrentLanguage().messages;
     this.languagesShorts = this.languageService.getAllLanguagesShorts();
@@ -34,6 +41,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   changeLanguage(languageShort) {
     this.languageService.setCurrentLanguageByShort(languageShort);
     this.messages = this.languageService.getCurrentLanguage().messages;
+  }
+
+  goToMain() {
+    // TODO - propoer login logic
+    this.router.navigate(['/main']);
   }
 
   switchTheme() {

@@ -1,0 +1,29 @@
+<div [class.light__theme]="!darkTheme"
+     fxLayout="column"
+
+     class="height-100">
+
+  <div fxLayout="row">
+
+    <div fxFlex class="mat-body-1" style="color: white">
+      <p>Students name</p>
+      <p>Students surname</p>
+      <p>Group</p>
+    </div>
+    <mat-form-field fxFlex style="color: white">
+      <input matInput type="search">
+      <mat-icon matSuffix>search</mat-icon>
+
+    </mat-form-field>
+    <div fxFlex></div>
+  </div>
+  <div
+    fxLayout="row"
+  fxLayoutAlign="start">
+
+    <app-menu></app-menu>
+    <div style="width: 400px"></div>
+  </div>
+
+
+</div>

@@ -19,12 +19,18 @@ import {
 } from '@angular/material';
 import {EntryComponent} from './entry/entry.component';
 import {ApiService} from './services/api.service';
+import {LanguageService} from './services/language.service';
+import {LoginService} from './services/login.service';
+import { MainPageComponent } from './main-page/main-page.component';
+import { MenuComponent } from './main-page/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EntryComponent
+    EntryComponent,
+    MainPageComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,9 @@ import {ApiService} from './services/api.service';
   ],
   providers: [
     ThemeService,
-    ApiService
+    ApiService,
+    LanguageService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
