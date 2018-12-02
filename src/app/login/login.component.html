@@ -15,11 +15,13 @@
        fxFlexAlign="center">
     <div fxLayout="column">
       <mat-form-field>
-        <input matInput placeholder="{{messages.login.enterLogin}}">
+        <input #loginInput (keyup.enter)="sendCredentials(loginInput.value, passwordInput.value)" matInput
+               placeholder="{{messages.login.enterLogin}}">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="{{messages.login.enterPassword}}" [type]="hide ? 'password' : 'text'">
+        <input #passwordInput (keyup.enter)="sendCredentials(loginInput.value, passwordInput.value)" matInput
+               placeholder="{{messages.login.enterPassword}}" [type]="hide ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <div fxLayout="row">
@@ -33,7 +35,7 @@
           fxFlex
           fxFlexAlign="end"
           mat-stroked-button
-          (click)="goToMain()"
+          (click)="sendCredentials(loginInput.value, passwordInput.value)"
           matTooltip="{{messages.login.logInTooltip}}">
           <mat-icon>meeting_room</mat-icon>
         </button>

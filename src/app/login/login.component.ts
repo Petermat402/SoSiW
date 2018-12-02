@@ -44,8 +44,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   goToMain() {
-    // TODO - propoer login logic
     this.router.navigate(['/main']);
+  }
+
+  sendCredentials(login: string, password: string) {
+    this.loginService.login(login, password).subscribe(user => {
+        if (user) {
+          console.log(user);
+          this.loginService.setUser(user);
+        }
+      },
+      error => {
+        console.log('djhfgdjfgjdfg==>>   ', error);
+      },
+      () => {
+        this.goToMain();
+      });
   }
 
   switchTheme() {
