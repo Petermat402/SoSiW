@@ -14,6 +14,9 @@
         "enterPassword": "Enter your password",
         "forgotPasswordTooltip": "Forgot password or login?",
         "logInTooltip": "Log in"
+      },
+      "error":{
+        "unauthorizedUser": "Unauthorized user"
       }
     }
   },
@@ -32,6 +35,9 @@
           "enterPassword": "Wprowadź hasło",
           "forgotPasswordTooltip": "Zapomniałeś hasła, albo loginu?",
           "logInTooltip": "Zaloguj się"
+        },
+        "error":{
+          "unauthorizedUser": "Brak autoryzacji"
         }
       }
     },
@@ -50,6 +56,9 @@
           "enterPassword": "Geben Sie Ihr Passwort ein",
           "forgotPasswordTooltip": "Passwort vergessen oder einloggen?",
           "logInTooltip": "Einloggen"
+        },
+        "error":{
+          "unauthorizedUser": "Nicht autorisierter Benutzer"
         }
       }
     }]

@@ -5,12 +5,12 @@
 
   <div fxLayout="row">
 
-    <div fxFlex class="mat-body-1" style="color: white">
-      <p>Students name</p>
-      <p>Students surname</p>
-      <p>Group</p>
+    <div fxFlex class="mat-body-1" [class.white-font]="darkTheme">
+      <p>{{user.name}}</p>
+      <p>{{user.surname}}</p>
+      <p>{{user.group ? user.group : user.departament}}</p>
     </div>
-    <mat-form-field fxFlex style="color: white">
+    <mat-form-field fxFlex [class.white-font]="darkTheme">
       <input matInput type="search">
       <mat-icon matSuffix>search</mat-icon>
 

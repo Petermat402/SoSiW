@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   hide = true;
   messages;
   languagesShorts;
+  errorMessage = '';
 
   ngOnInit() {
     this.messages = this.languageService.getCurrentLanguage().messages;
@@ -55,6 +56,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
         }
       },
       error => {
+        if (error.code === 401) {
+          this.errorMessage = this.messages.error.unauthorizedUser;
+        }
         console.log('djhfgdjfgjdfg==>>   ', error);
       },
       () => {

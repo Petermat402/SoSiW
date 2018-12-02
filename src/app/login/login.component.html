@@ -3,7 +3,7 @@
      fxLayoutAlign="center center"
      class="height-100">
 
-  <div fxFlex
+  <div fxFlex="1 1 40%"
        fxFlexAlign="start">
     <button (click)="switchTheme()"
             mat-mini-fab=""
@@ -11,7 +11,8 @@
       <mat-icon>invert_colors</mat-icon>
     </button>
   </div>
-  <div fxFlex
+
+  <div fxFlex="2 2 60%"
        fxFlexAlign="center">
     <div fxLayout="column">
       <mat-form-field>
@@ -40,6 +41,7 @@
           <mat-icon>meeting_room</mat-icon>
         </button>
       </div>
+        <p [class.white-font]="darkTheme" class="mat-body-1">{{errorMessage}}</p>
     </div>
 
     <div fxFlex
