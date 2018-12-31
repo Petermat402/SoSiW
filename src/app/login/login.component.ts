@@ -31,12 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.elementRef
-      .nativeElement
-      .ownerDocument
-      .body
-      .style
-      .backgroundImage = 'radial-gradient(circle, #a60505, #800117, #580a1b, #2f0d15, #210404, #000000)';
+    this.setBackground();
   }
 
   changeLanguage(languageShort) {
@@ -58,8 +53,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
       error => {
         if (error.code === 401) {
           this.errorMessage = this.messages.error.unauthorizedUser;
+        } else {
+          this.errorMessage = error.message;
         }
-        console.log('djhfgdjfgjdfg==>>   ', error);
       },
       () => {
         this.goToMain();
@@ -69,6 +65,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
   switchTheme() {
     this.themeService.changeTheme();
     this.darkTheme = this.themeService.isDarkTheme;
+    this.setBackground();
+  }
+
+  private setBackground() {
     if (this.themeService.isDarkTheme) {
       this.elementRef
         .nativeElement

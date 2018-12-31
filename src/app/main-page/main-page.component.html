@@ -1,6 +1,5 @@
 <div [class.light__theme]="!darkTheme"
      fxLayout="column"
-
      class="height-100">
 
   <div fxLayout="row">
@@ -19,10 +18,26 @@
   </div>
   <div
     fxLayout="row"
-  fxLayoutAlign="start">
+    fxLayoutAlign="start">
 
-    <app-menu></app-menu>
-    <div style="width: 400px"></div>
+    <app-menu [messages]="messages"
+    (clickLogout)="logout()"
+    (clickSettings)="showSettingsComponent = !showSettingsComponent"
+    (clickAccount)="showAccountInfo()"
+    (clickColleagues)="showColleagues()"
+    (clickEmail)="showEmail()"
+    (clickGrades)="showGrades()"></app-menu>
+    <div>
+      <app-account-information *ngIf="showAccountComponent"
+      [messages] = "messages"
+      [user]="user"></app-account-information>
+    </div>
+    <app-settings *ngIf="showSettingsComponent"
+      [messages] = "messages"
+      [darkTheme] = "darkTheme"
+      (darkThemeChange)="updateTheme($event)"
+      (languageChange)="updateLanguage($event)"
+    class="settings"></app-settings>
   </div>
 
 

@@ -1,3 +1,99 @@
-<p>
-  settings works!
-</p>
+<div fxFlex
+     style="position: absolute; right: 0">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{messages.settings.changeEmail}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input #newEmail matInput placeholder="{{messages.settings.newEmail}}">
+    </mat-form-field>
+
+    <div fxLayout="row">
+      <button fxFlex
+              fxFlexAlign="start"
+              mat-stroked-button
+              (click)="clear(newEmail)">
+        {{messages.common.clear}}
+      </button>
+      <button
+        fxFlex
+        fxFlexAlign="end"
+        mat-stroked-button
+      (click)="confirmChangeEmail(newEmail.value)">
+        {{messages.common.confirm}}
+      </button>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{messages.settings.changePassword}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column">
+      <mat-form-field fxFlex>
+        <input #oldPasswordInput matInput
+               placeholder="{{messages.settings.oldPassword}}" [type]="hideOld ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <input #newPasswordInput matInput
+               placeholder="{{messages.settings.newPassword}}" [type]="hideNew ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hideNew = !hideNew">{{hideNew ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex>
+        <input #repeatPasswordInput matInput
+               placeholder="{{messages.settings.repeatNewPassword}}" [type]="hideRepeat ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hideRepeat = !hideRepeat">{{hideRepeat ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+      </mat-form-field>
+
+      <div fxLayout="row">
+        <button fxFlex
+                fxFlexAlign="start"
+                mat-stroked-button
+        (click)="clear(oldPasswordInput, newPasswordInput, repeatPasswordInput)">
+          {{messages.common.clear}}
+        </button>
+        <button
+          fxFlex
+          fxFlexAlign="end"
+          mat-stroked-button
+        (click)="confirmChangePassword(oldPasswordInput.value, newPasswordInput.value, repeatPasswordInput.value)">
+          {{messages.common.confirm}}
+        </button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{messages.common.languageWord}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column">
+      <button
+        *ngFor="let language of languagesNames"
+        (click)="changeLanguage(language)"
+        mat-flat-button>
+        {{language}}
+      </button>
+    </div>
+  </mat-expansion-panel>
+  <div>
+    <button (click)="switchTheme()"
+            mat-raised-button style="width: 100%">
+      {{messages.common.changeThemeTooltip}}
+    </button>
+  </div>
+  <mat-card *ngIf="showInfo" [class.error-color]="isError">{{infoMessage}}</mat-card>
+</div>
+

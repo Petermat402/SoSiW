@@ -13,7 +13,7 @@ export class LoginService {
 
   login(login: string, password: string) {
     const basePassword = btoa(password);
-    return this.apiService.login(login, basePassword)
+    return this.apiService.login(login, basePassword);
   }
 
   setUser(user: User) {

@@ -10,9 +10,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeService} from './services/theme.service';
 import {
   MatButtonModule,
+  MatCardModule, MatDividerModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatSelectModule,
+  MatInputModule, MatListModule, MatSelectModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
@@ -23,6 +25,8 @@ import {LanguageService} from './services/language.service';
 import {LoginService} from './services/login.service';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MenuComponent } from './main-page/menu/menu.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AccountInformationComponent } from './account-information/account-information.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { MenuComponent } from './main-page/menu/menu.component';
     LoginComponent,
     EntryComponent,
     MainPageComponent,
-    MenuComponent
+    MenuComponent,
+    SettingsComponent,
+    AccountInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,12 @@ import { MenuComponent } from './main-page/menu/menu.component';
     MatInputModule,
     MatIconModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatListModule,
+    MatDividerModule
+
   ],
   providers: [
     ThemeService,

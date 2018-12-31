@@ -31,10 +31,10 @@ export class ApiService {
     }
     // return an observable with a user-facing error message
     return throwError({
-      message: 'Something bad happened; please try again later.',
-      code: error.status
-    }
-      );
+        message: 'Something bad happened; please try again later.',
+        code: error.status
+      }
+    );
   }
 
   private get httpOptions() {
@@ -45,7 +45,7 @@ export class ApiService {
 
   public login(login: string, password: string) {
     const url = `${backend}/login`;
-    return this.httpClient.post(url, {...this.httpOptions, login: login, password: password}).pipe(
+    return this.httpClient.post(url, {login: login, password: password}, this.httpOptions).pipe(
       tap((response: TokenResponse) => {
         console.log(response.token);
         if (response) {
@@ -64,6 +64,34 @@ export class ApiService {
       )),
       catchError(this.handleError)
     );
+  }
+
+  public changeEmail(newEmail: string) {
+    const url = `${backend}/settings/changeEmail`;
+    return this.httpClient.put(url, {email: newEmail}, this.httpOptions).pipe(
+      map((object: any) => {
+        return {
+          message: object.message
+        };
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  public changePassword(passwordOld: string, passwordNew: string) {
+    const url = `${backend}/settings/changePassword`;
+    return this.httpClient.put(url, {passwordOld: passwordOld, passwordNew: passwordNew}, this.httpOptions).pipe(
+      map((object: any) => {
+        return {
+          message: object.message
+        };
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  public dropToken() {
+    this.token = '';
   }
 
 }

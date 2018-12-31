@@ -7,7 +7,15 @@
     "messages":{
       "common":{
         "changeThemeTooltip": "Change theme",
-        "languageWord": "Language"
+        "languageWord": "Language",
+        "confirm": "Confirm",
+        "clear": "Clear",
+        "nameAndSurname": "Name and Surname",
+        "pesel": "Pesel",
+        "group": "Group",
+        "department": "Department",
+        "role": "Role",
+        "idNumber": "Identification number"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -16,7 +24,25 @@
         "logInTooltip": "Log in"
       },
       "error":{
-        "unauthorizedUser": "Unauthorized user"
+        "unauthorizedUser": "Unauthorized user",
+        "unidentifiedError": "Some kind of error happened",
+        "wrongRepeatedPassword": "New and repeated Passwords does not match"
+      },
+      "settings":{
+        "changePassword": "Change Password",
+        "changeEmail": "Change E-mail",
+        "oldPassword": "old password",
+        "newPassword": "new password",
+        "repeatNewPassword": "repeat new password",
+        "newEmail": "new E-mail"
+      },
+      "menu":{
+        "gradeTooltip" : "Grades",
+        "colleaguesTooltip": "Colleagues",
+        "emailTooltip": "Email",
+        "accountTooltip": "Account",
+        "settingTooltip": "Settings",
+        "logoutTooltip": "Logout"
       }
     }
   },
@@ -28,7 +54,15 @@
       "messages":{
         "common":{
           "changeThemeTooltip": "Zmień motyw",
-          "languageWord": "Język"
+          "languageWord": "Język",
+          "confirm": "Potwierdź",
+          "clear": "Wyczyść",
+          "nameAndSurname": "Imię i Nazwisko",
+          "pesel": "Pesel",
+          "group": "Grupa",
+          "department": "Wydział",
+          "role": "Rola",
+          "idNumber": "Numer identyfikacyjny"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -37,7 +71,25 @@
           "logInTooltip": "Zaloguj się"
         },
         "error":{
-          "unauthorizedUser": "Brak autoryzacji"
+          "unauthorizedUser": "Brak autoryzacji",
+          "unidentifiedError": "Wystąpił jakiś błąd",
+          "wrongRepeatedPassword": "Nowe i powtórzone hasło nie są takie same"
+        },
+        "settings":{
+          "changePassword": "Zmień Hasło",
+          "changeEmail": "Zmień E-mail",
+          "oldPassword": "stare hasło",
+          "newPassword": "nowe hasło",
+          "repeatNewPassword": "powtórz nowe hasło",
+          "newEmail": "nowy E-mail"
+        },
+        "menu":{
+          "gradeTooltip" : "Oceny",
+          "colleaguesTooltip": "Koledzy",
+          "emailTooltip": "Email",
+          "accountTooltip": "Konto",
+          "settingTooltip": "Ustawienia",
+          "logoutTooltip": "Wyloguj"
         }
       }
     },
@@ -49,7 +101,15 @@
       "messages":{
         "common":{
           "changeThemeTooltip": "Thema wechseln",
-          "languageWord": "Sprache"
+          "languageWord": "Sprache",
+          "confirm": "Bestätigen",
+          "clear": "Klar",
+          "nameAndSurname": "Name und Nachname",
+          "pesel": "Pesel",
+          "group": "Grupe",
+          "department": "Abteilung",
+          "role": "die Partie",
+          "idNumber": "Identifikationsnummer"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
@@ -58,7 +118,25 @@
           "logInTooltip": "Einloggen"
         },
         "error":{
-          "unauthorizedUser": "Nicht autorisierter Benutzer"
+          "unauthorizedUser": "Nicht autorisierter Benutzer",
+          "unidentifiedError": "Irgendein Fehler ist passiert",
+          "wrongRepeatedPassword": "Neue und wiederholte Passwörter stimmen nicht überein"
+        },
+        "settings":{
+          "changePassword": "Ändere das Passwort",
+          "changeEmail": "Ändern Sie die E-Mail",
+          "oldPassword": "Altes Passwort",
+          "newPassword": "Neues Kennwort",
+          "repeatNewPassword": "Wiederhole das neue Passwort",
+          "newEmail": "Neues E-mail"
+        },
+        "menu":{
+          "gradeTooltip" : "Noten",
+          "colleaguesTooltip": "Kollegen",
+          "emailTooltip": "Email",
+          "accountTooltip": "Konto",
+          "settingTooltip": "die Einstellungen",
+          "logoutTooltip": "Ausloggen"
         }
       }
     }]

@@ -33,9 +33,25 @@ export class LanguageService {
     });
     return shorts;
   }
+
+  public getAllLanguagesNames() {
+    const fullNames = [];
+    _.forEach(this.languagesList, language => {
+      fullNames.push(language.value);
+    });
+    return fullNames;
+  }
+
   public setCurrentLanguageByShort(languageShort) {
     const newLanguage = _.filter(this.languagesList, language => {
       return language.short === languageShort;
+    });
+    this.currentLanguage = newLanguage[0];
+  }
+
+  public setCurrentLanguageByName(languageShort) {
+    const newLanguage = _.filter(this.languagesList, language => {
+      return language.value === languageShort;
     });
     this.currentLanguage = newLanguage[0];
   }
