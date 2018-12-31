@@ -13,7 +13,6 @@ import {throwError} from 'rxjs';
 })
 export class ApiService {
   private token: string;
-  private backendUrl = backend;
 
   constructor(private httpClient: HttpClient) {
   }

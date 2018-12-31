@@ -8,7 +8,7 @@ import {LanguageService} from '../../services/language.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private languageService: LanguageService) {
+  constructor() {
   }
 
   @Input() messages;
