@@ -27,6 +27,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MenuComponent } from './main-page/menu/menu.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AccountInformationComponent } from './account-information/account-information.component';
+import { ColleaguesComponent } from './colleagues/colleagues.component';
+import { ColleaguesInformationComponent } from './colleagues-information/colleagues-information.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AccountInformationComponent } from './account-information/account-infor
     MainPageComponent,
     MenuComponent,
     SettingsComponent,
-    AccountInformationComponent
+    AccountInformationComponent,
+    ColleaguesComponent,
+    ColleaguesInformationComponent
   ],
   imports: [
     BrowserModule,

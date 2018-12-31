@@ -6,8 +6,6 @@ import {catchError, map, tap} from 'rxjs/operators';
 import {User} from '../models/user';
 import {throwError} from 'rxjs';
 
-// import {TokenResponse} from './api.service';
-
 @Injectable({
   providedIn: 'root'
 })
