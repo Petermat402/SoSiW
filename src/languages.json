@@ -11,11 +11,16 @@
         "confirm": "Confirm",
         "clear": "Clear",
         "nameAndSurname": "Name and Surname",
+        "name": "Name",
+        "surname": "Surname",
         "pesel": "Pesel",
         "group": "Group",
         "department": "Department",
         "role": "Role",
-        "idNumber": "Identification number"
+        "idNumber": "Identification number",
+        "chooseCategory": "Choose category",
+        "subject": "Subject",
+        "warningCategory": "PLease choose category"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -43,6 +48,11 @@
         "accountTooltip": "Account",
         "settingTooltip": "Settings",
         "logoutTooltip": "Logout"
+      },
+      "roles": {
+        "student": "Student",
+        "teacher": "Teacher",
+        "administrator": "Administrator"
       }
     }
   },
@@ -58,11 +68,16 @@
           "confirm": "Potwierdź",
           "clear": "Wyczyść",
           "nameAndSurname": "Imię i Nazwisko",
+          "name": "Imię",
+          "surname": "Nazwisko",
           "pesel": "Pesel",
           "group": "Grupa",
           "department": "Wydział",
           "role": "Rola",
-          "idNumber": "Numer identyfikacyjny"
+          "idNumber": "Numer identyfikacyjny",
+          "chooseCategory": "Wybierz kategorię",
+          "subject": "Przedmiot",
+          "warningCategory": "Wybierz kategorię"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -90,6 +105,11 @@
           "accountTooltip": "Konto",
           "settingTooltip": "Ustawienia",
           "logoutTooltip": "Wyloguj"
+        },
+        "roles": {
+          "student": "Student",
+          "teacher": "Wykładowca",
+          "administrator": "Administrator"
         }
       }
     },
@@ -105,11 +125,16 @@
           "confirm": "Bestätigen",
           "clear": "Klar",
           "nameAndSurname": "Name und Nachname",
+          "name": "Name",
+          "surname": "Nachname",
           "pesel": "Pesel",
           "group": "Grupe",
           "department": "Abteilung",
           "role": "die Partie",
-          "idNumber": "Identifikationsnummer"
+          "idNumber": "Identifikationsnummer",
+          "chooseCategory": "Kategorie auswählen",
+          "subject": "Schulfach",
+          "warningCategory": "Bitte wählen Sie eine Kategorie"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
@@ -137,6 +162,11 @@
           "accountTooltip": "Konto",
           "settingTooltip": "die Einstellungen",
           "logoutTooltip": "Ausloggen"
+        },
+        "roles": {
+          "student": "Student",
+          "teacher": "Lehrer",
+          "administrator": "Administrator"
         }
       }
     }]

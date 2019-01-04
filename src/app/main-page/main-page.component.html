@@ -9,12 +9,36 @@
       <p>{{user.surname}}</p>
       <p>{{user.group ? user.group : user.departament}}</p>
     </div>
-    <mat-form-field fxFlex [class.white-font]="darkTheme">
-      <input matInput type="search">
-      <mat-icon matSuffix>search</mat-icon>
 
-    </mat-form-field>
-    <div fxFlex></div>
+      <mat-form-field fxFlex [class.white-font]="darkTheme">
+        <input matInput type="search" #searchBar>
+        <button mat-icon-button matSuffix (click)="showSearch(searchBar.value, searchCategory)">
+          <mat-icon >search</mat-icon>
+        </button>
+      </mat-form-field>
+
+    <div fxFlex fxLayout="row">
+      <div fxFlex class="select-category">
+        <mat-form-field fxFlex>
+          <mat-select placeholder="{{messages.common.chooseCategory}}" [(value)]="searchCategory" required>
+            <mat-option value="student">
+              {{messages.roles.student}}
+            </mat-option>
+            <mat-option value="teacher">
+              {{messages.roles.teacher}}
+            </mat-option>
+            <mat-option value="course">
+              {{messages.common.subject}}
+            </mat-option>
+            <mat-option value="group">
+              {{messages.common.group}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex></div>
+    </div>
   </div>
   <div
     fxLayout="row"
@@ -27,10 +51,14 @@
     (clickColleagues)="showColleagues()"
     (clickEmail)="showEmail()"
     (clickGrades)="showGrades()"></app-menu>
-    <div>
+    <div fxFlex class="middle-field">
       <app-account-information *ngIf="showAccountComponent"
       [messages] = "messages"
       [user]="user"></app-account-information>
+      <app-colleagues-information *ngIf="showColleaguesComponent"
+      [messages]="messages"
+      [userRole]="user.role"
+      [users]="users"></app-colleagues-information>
     </div>
     <app-settings *ngIf="showSettingsComponent"
       [messages] = "messages"

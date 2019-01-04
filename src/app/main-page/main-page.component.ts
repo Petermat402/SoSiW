@@ -5,6 +5,7 @@ import {LanguageService} from '../services/language.service';
 import {LoginService} from '../services/login.service';
 import {ApiService} from '../services/api.service';
 import {Router} from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-main-page',
@@ -23,6 +24,7 @@ export class MainPageComponent implements OnInit {
 
   darkTheme = this.themeService.isDarkTheme;
   user: User;
+  users: User[];
   messages;
 
   showSettingsComponent = false;
@@ -30,6 +32,9 @@ export class MainPageComponent implements OnInit {
   showColleaguesComponent = false;
   showEmailComponent = false;
   showAccountComponent = false;
+  showSearchCourseComponent = false;
+
+  searchCategory = 'student';
 
   ngOnInit() {
     this.updateLanguage();
@@ -78,17 +83,44 @@ export class MainPageComponent implements OnInit {
   }
 
   showAccountInfo() {
-    this.setComponentsVisibility(false, false, false, !this.showAccountComponent);
+    this.setComponentsVisibility(false, false, false, !this.showAccountComponent, false);
   }
 
   showColleagues() {
+    if (!this.showColleaguesComponent) {
+      this.apiService.getColleagues().subscribe(users => {
+          if (users) {
+            this.users = users;
+          }
+        },
+        err => console.log(err)
+      );
+    }
+    this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
   }
 
-  private setComponentsVisibility(grades: boolean, colleagues: boolean, email: boolean, account: boolean) {
+  showSearch(searchPhrase: string, category: string) {
+    if (category === 'course') {
+
+    } else {
+      if (!this.showColleaguesComponent) {
+        this.apiService.findUsers(searchPhrase, category).subscribe(users => {
+            if (users) {
+              this.users = users;
+            }
+          }, err => console.log(err)
+        );
+      }
+      this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
+    }
+  }
+
+  private setComponentsVisibility(grades: boolean, colleagues: boolean, email: boolean, account: boolean, searchCourse: boolean) {
     this.showGradesComponent = grades;
     this.showColleaguesComponent = colleagues;
     this.showEmailComponent = email;
     this.showAccountComponent = account;
+    this.showSearchCourseComponent = searchCourse;
   }
 
 

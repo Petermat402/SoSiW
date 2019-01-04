@@ -14,7 +14,7 @@ import {
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatSelectModule,
+  MatInputModule, MatListModule, MatSelectModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
@@ -27,8 +27,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { MenuComponent } from './main-page/menu/menu.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AccountInformationComponent } from './account-information/account-information.component';
-import { ColleaguesComponent } from './colleagues/colleagues.component';
 import { ColleaguesInformationComponent } from './colleagues-information/colleagues-information.component';
+import { SearchCourseComponent } from './search-course/search-course.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +39,8 @@ import { ColleaguesInformationComponent } from './colleagues-information/colleag
     MenuComponent,
     SettingsComponent,
     AccountInformationComponent,
-    ColleaguesComponent,
-    ColleaguesInformationComponent
+    ColleaguesInformationComponent,
+    SearchCourseComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,8 +59,8 @@ import { ColleaguesInformationComponent } from './colleagues-information/colleag
     MatExpansionModule,
     MatCardModule,
     MatListModule,
-    MatDividerModule
-
+    MatDividerModule,
+    MatTableModule
   ],
   providers: [
     ThemeService,

@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import {catchError, map, tap} from 'rxjs/operators';
 import {User} from '../models/user';
 import {throwError} from 'rxjs';
+import {CourseBackend} from '../models/courseBackend';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class ApiService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
+      console.error(error);
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
@@ -44,7 +46,6 @@ export class ApiService {
     const url = `${backend}/login`;
     return this.httpClient.post(url, {login: login, password: password}, this.httpOptions).pipe(
       tap((response: TokenResponse) => {
-        console.log(response.token);
         if (response) {
           this.token = response.token;
         }
@@ -87,8 +88,61 @@ export class ApiService {
     );
   }
 
+  public getColleagues() {
+    const url = `${backend}/colleagues?`;
+    return this.httpClient.get(url, this.httpOptions).pipe(
+      this.mapUsers(),
+      catchError(this.handleError)
+    );
+  }
+
+  public findUsers(searchPhrase: string, category: string) {
+    const url = `${backend}/search/${category}/${searchPhrase}?`;
+    return this.httpClient.get(url, this.httpOptions).pipe(
+      this.mapUsers(),
+      catchError(this.handleError)
+    );
+  }
+
+  public findCourses(searchPhrase: string, category: string) {
+    const url = `${backend}/search/${category}/${searchPhrase}`;
+    return this.httpClient.get(url, this.httpOptions).pipe(
+     map((objects: any) => {
+      const courses: CourseBackend[] = [];
+      _.each(objects, object => {
+        courses.push(new CourseBackend(
+          object.id,
+          object.name,
+          object.id_teacher
+        ));
+      });
+      return courses;
+    }),
+      catchError(this.handleError)
+  );
+  }
+
   public dropToken() {
     this.token = '';
+  }
+
+  private mapUsers() {
+    return map((objects: any) => {
+      const users: User[] = [];
+      _.each(objects, object => {
+        users.push(new User(
+          object.id,
+          object.name,
+          object.surname,
+          object.pesel,
+          object.email,
+          object.group,
+          object.departament,
+          object.role)
+        );
+      });
+      return users;
+    });
   }
 
 }
