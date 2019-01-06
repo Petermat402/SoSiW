@@ -1,3 +1,63 @@
-<p>
-  grade works!
-</p>
+<mat-form-field [class.white-font]="darkTheme">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="grades" matSort>
+
+    <ng-container matColumnDef="studentId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.studentId}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.name}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.teacherName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="teacherSurname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.surname}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.teacherSurname}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="courseName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.subject}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.courseName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.grade}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.value}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="term">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.term}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.term}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="academicYear">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.academicYear}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.academicYear}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="semester">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.semester}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.semester}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> {{messages.common.action}}</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-raised-button
+          (click)="displayEditGradeModal(element)">
+          {{messages.common.edit}}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,3 +1,46 @@
-<p>
-  search-course works!
-</p>
+<table mat-table [dataSource]="courses" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> {{messages.common.subject}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="teacherName">
+    <th mat-header-cell *matHeaderCellDef> {{messages.common.name}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.teacherName}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="teacherSurname">
+    <th mat-header-cell *matHeaderCellDef> {{messages.common.surname}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.teacherSurname}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="department">
+    <th mat-header-cell *matHeaderCellDef> {{messages.common.department}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.department}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> {{messages.menu.emailTooltip}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.email}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="academicYear">
+    <th mat-header-cell *matHeaderCellDef> {{messages.common.academicYear}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.academicYear}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="semester">
+    <th mat-header-cell *matHeaderCellDef> {{messages.common.semester}}</th>
+    <td mat-cell *matCellDef="let element"> {{element.semester === 'winter' ? messages.common.winter : messages.common.summer}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

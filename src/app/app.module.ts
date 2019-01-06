@@ -10,11 +10,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeService} from './services/theme.service';
 import {
   MatButtonModule,
-  MatCardModule, MatDividerModule,
+  MatCardModule,
+  MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatSelectModule, MatTableModule,
+  MatInputModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSelectModule, MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
@@ -23,12 +30,17 @@ import {EntryComponent} from './entry/entry.component';
 import {ApiService} from './services/api.service';
 import {LanguageService} from './services/language.service';
 import {LoginService} from './services/login.service';
-import { MainPageComponent } from './main-page/main-page.component';
-import { MenuComponent } from './main-page/menu/menu.component';
-import { SettingsComponent } from './settings/settings.component';
-import { AccountInformationComponent } from './account-information/account-information.component';
-import { ColleaguesInformationComponent } from './colleagues-information/colleagues-information.component';
-import { SearchCourseComponent } from './search-course/search-course.component';
+import {MainPageComponent} from './main-page/main-page.component';
+import {MenuComponent} from './main-page/menu/menu.component';
+import {SettingsComponent} from './settings/settings.component';
+import {AccountInformationComponent} from './account-information/account-information.component';
+import {ColleaguesInformationComponent} from './colleagues-information/colleagues-information.component';
+import {SearchCourseComponent} from './search-course/search-course.component';
+import {GradeComponent} from './grade/grade.component';
+import {AddGradeModalComponent} from './add-grade-modal/add-grade-modal.component';
+import {EditGradeModalComponent} from './edit-grade-modal/edit-grade-modal.component';
+import {FormsModule} from '@angular/forms';
+import {ErrorService} from './services/error.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +53,9 @@ import { SearchCourseComponent } from './search-course/search-course.component';
     AccountInformationComponent,
     ColleaguesInformationComponent,
     SearchCourseComponent,
+    GradeComponent,
+    AddGradeModalComponent,
+    EditGradeModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,15 +75,25 @@ import { SearchCourseComponent } from './search-course/search-course.component';
     MatCardModule,
     MatListModule,
     MatDividerModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [
     ThemeService,
     ApiService,
     LanguageService,
-    LoginService
+    LoginService,
+    ErrorService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    EditGradeModalComponent,
+    AddGradeModalComponent
+  ]
 })
 export class AppModule {
 }

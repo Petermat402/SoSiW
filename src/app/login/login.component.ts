@@ -3,6 +3,7 @@ import {ThemeService} from '../services/theme.service';
 import {LanguageService} from '../services/language.service';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
+import {ErrorService} from '../services/error.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private themeService: ThemeService,
     private languageService: LanguageService,
     private loginService: LoginService,
+    private errorService: ErrorService,
     private router: Router
   ) {
   }
@@ -46,20 +48,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
   sendCredentials(login: string, password: string) {
     this.loginService.login(login, password).subscribe(user => {
         if (user) {
-          console.log(user);
           this.loginService.setUser(user);
         }
       },
-      error => {
-        if (error.code === 401) {
-          this.errorMessage = this.messages.error.unauthorizedUser;
-        } else {
-          this.errorMessage = error.message;
-        }
-      },
+      err => this.errorService.handleError(err),
       () => {
         this.goToMain();
       });
+    this.loginService.setAcademicYear();
   }
 
   switchTheme() {

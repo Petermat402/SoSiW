@@ -5,7 +5,10 @@ import {LanguageService} from '../services/language.service';
 import {LoginService} from '../services/login.service';
 import {ApiService} from '../services/api.service';
 import {Router} from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import {SearchService} from '../services/search.service';
+import {Course} from '../models/course';
+import {MatTableDataSource} from '@angular/material';
+import {ErrorService} from '../services/error.service';
 
 @Component({
   selector: 'app-main-page',
@@ -19,12 +22,14 @@ export class MainPageComponent implements OnInit {
               private languageService: LanguageService,
               private loginService: LoginService,
               private apiService: ApiService,
-              private router: Router) {
+              private searchService: SearchService,
+              private router: Router,
+              private errorService: ErrorService) {
   }
 
   darkTheme = this.themeService.isDarkTheme;
   user: User;
-  users: User[];
+  users: MatTableDataSource<User>;
   messages;
 
   showSettingsComponent = false;
@@ -77,6 +82,7 @@ export class MainPageComponent implements OnInit {
   }
 
   showGrades() {
+    this.setComponentsVisibility(!this.showGradesComponent, false, false, false, false);
   }
 
   showEmail() {
@@ -90,28 +96,28 @@ export class MainPageComponent implements OnInit {
     if (!this.showColleaguesComponent) {
       this.apiService.getColleagues().subscribe(users => {
           if (users) {
-            this.users = users;
+            this.users = new MatTableDataSource(users);
           }
+          this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
         },
-        err => console.log(err)
+        err => this.errorService.handleError(err)
       );
     }
-    this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
   }
 
   showSearch(searchPhrase: string, category: string) {
     if (category === 'course') {
-
+      this.setComponentsVisibility(false, false, false, false, !this.showSearchCourseComponent);
     } else {
       if (!this.showColleaguesComponent) {
         this.apiService.findUsers(searchPhrase, category).subscribe(users => {
             if (users) {
-              this.users = users;
+              this.users = new MatTableDataSource(users);
             }
-          }, err => console.log(err)
+          this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
+          }, err => this.errorService.handleError(err)
         );
       }
-      this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
     }
   }
 

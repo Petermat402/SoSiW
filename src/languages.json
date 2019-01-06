@@ -20,7 +20,17 @@
         "idNumber": "Identification number",
         "chooseCategory": "Choose category",
         "subject": "Subject",
-        "warningCategory": "PLease choose category"
+        "warningCategory": "PLease choose category",
+        "academicYear": "Academic Year",
+        "semester": "Semester",
+        "winter": "Winter",
+        "summer": "Summer",
+        "grade": "Grade",
+        "term": "Term",
+        "action": "Action",
+        "edit": "Edit",
+        "sendEmail": "Send Email",
+        "cancel" : "Cancel"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -31,7 +41,17 @@
       "error":{
         "unauthorizedUser": "Unauthorized user",
         "unidentifiedError": "Some kind of error happened",
-        "wrongRepeatedPassword": "New and repeated Passwords does not match"
+        "wrongRepeatedPassword": "New and repeated Passwords does not match",
+        "failToAuthorize": "Failed to authorize token",
+        "noToken": "No token Provided",
+        "noSuchUser": "No Such User",
+        "wrongPersonAsTeacher": "Wronfg person assigned as teacher",
+        "cannotModifyGrades": "Cannot modify Grades when academic year has been closed",
+        "wrongRole": "Wrong or no role specified",
+        "wrongCredentials": "Incorrect Credentials",
+        "wrongPassword": "Incorrect Password provided",
+        "noGradeEntry": "No such Grade entry",
+        "databaseError": "Database error"
       },
       "settings":{
         "changePassword": "Change Password",
@@ -77,7 +97,17 @@
           "idNumber": "Numer identyfikacyjny",
           "chooseCategory": "Wybierz kategorię",
           "subject": "Przedmiot",
-          "warningCategory": "Wybierz kategorię"
+          "warningCategory": "Wybierz kategorię",
+          "academicYear": "Rok Akademicki",
+          "semester": "Semestr",
+          "winter": "Zimowy",
+          "summer": "Letni",
+          "grade": "Ocena",
+          "term": "Termin",
+          "action": "Akcja",
+          "edit": "Edytuj",
+          "sendEmail": "Wyślij Email",
+          "cancel" : "Anuluj"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -88,7 +118,17 @@
         "error":{
           "unauthorizedUser": "Brak autoryzacji",
           "unidentifiedError": "Wystąpił jakiś błąd",
-          "wrongRepeatedPassword": "Nowe i powtórzone hasło nie są takie same"
+          "wrongRepeatedPassword": "Nowe i powtórzone hasło nie są takie same",
+          "failToAuthorize": "Nieudana autoryzacja tokenu",
+          "noToken": "Brak tokenu",
+          "noSuchUser": "Nie ma takiego użytkownika",
+          "wrongPersonAsTeacher": "Zła osoba przypisana jako wykładowca",
+          "cannotModifyGrades": "Nie można modyfikować ocen po zakończeniu roku akademickiego",
+          "wrongRole": "Zła rola lub brak roli",
+          "wrongCredentials": "Niepoprawny login lub hasło",
+          "wrongPassword": "Nieprawidłowe hasło",
+          "noGradeEntry": "Brak takiej oceny",
+          "databaseError": "Błąd bazy danych"
         },
         "settings":{
           "changePassword": "Zmień Hasło",
@@ -134,7 +174,17 @@
           "idNumber": "Identifikationsnummer",
           "chooseCategory": "Kategorie auswählen",
           "subject": "Schulfach",
-          "warningCategory": "Bitte wählen Sie eine Kategorie"
+          "warningCategory": "Bitte wählen Sie eine Kategorie",
+          "academicYear": "Akademisches Jahr",
+          "semester": "Semester",
+          "winter": "Winterlich",
+          "summer": "Sommerlich",
+          "grade": "Note",
+          "term": "Begriff",
+          "action": "Aktion",
+          "edit": "Bearbeiten",
+          "sendEmail": "E-Mail senden",
+          "cancel" : "Stornieren"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
@@ -145,7 +195,17 @@
         "error":{
           "unauthorizedUser": "Nicht autorisierter Benutzer",
           "unidentifiedError": "Irgendein Fehler ist passiert",
-          "wrongRepeatedPassword": "Neue und wiederholte Passwörter stimmen nicht überein"
+          "wrongRepeatedPassword": "Neue und wiederholte Passwörter stimmen nicht überein",
+          "failToAuthorize": "Token konnte nicht autorisiert werden",
+          "noToken": "Kein Token zur Verfügung gestellt",
+          "noSuchUser": "Kein solcher Benutzer",
+          "wrongPersonAsTeacher": "Falsche Person als Lehrer zugewiesen",
+          "cannotModifyGrades": "Die Klassen können nicht geändert werden, wenn das Schuljahr geschlossen wurde",
+          "wrongRole": "Falsche oder keine Rolle angegeben",
+          "wrongCredentials": "Incorrect Credentials",
+          "wrongPassword": "Falsches Passwort angegeben",
+          "noGradeEntry": "Keine solche Eintragung",
+          "databaseError": "Datenbankfehler"
         },
         "settings":{
           "changePassword": "Ändere das Passwort",

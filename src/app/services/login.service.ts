@@ -7,6 +7,7 @@ import {User} from '../models/user';
 })
 export class LoginService {
   private user: User;
+  academicYear: string;
 
   constructor(private apiService: ApiService) {
   }
@@ -14,6 +15,13 @@ export class LoginService {
   login(login: string, password: string) {
     const basePassword = btoa(password);
     return this.apiService.login(login, basePassword);
+  }
+
+  setAcademicYear() {
+    this.apiService.getAcademicYear().subscribe(object => {
+        this.academicYear = object.academicYear;
+      },
+      err => console.log);
   }
 
   setUser(user: User) {

@@ -2,7 +2,7 @@
      fxLayout="column"
      class="height-100">
 
-  <div fxLayout="row">
+  <div fxLayout="row" fxLayoutGap="10px">
 
     <div fxFlex class="mat-body-1" [class.white-font]="darkTheme">
       <p>{{user.name}}</p>
@@ -17,8 +17,8 @@
         </button>
       </mat-form-field>
 
-    <div fxFlex fxLayout="row">
-      <div fxFlex class="select-category">
+    <div fxFlex fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex>
         <mat-form-field fxFlex>
           <mat-select placeholder="{{messages.common.chooseCategory}}" [(value)]="searchCategory" required>
             <mat-option value="student">
@@ -42,7 +42,8 @@
   </div>
   <div
     fxLayout="row"
-    fxLayoutAlign="start">
+    fxLayoutAlign="start"
+  fxLayoutGap="20px">
 
     <app-menu [messages]="messages"
     (clickLogout)="logout()"
@@ -51,21 +52,29 @@
     (clickColleagues)="showColleagues()"
     (clickEmail)="showEmail()"
     (clickGrades)="showGrades()"></app-menu>
-    <div fxFlex class="middle-field">
+    <div fxFlex>
+      <app-grade *ngIf="showGradesComponent"
+      [messages]="messages"
+      [userRole]="user.role"
+      [darkTheme]="darkTheme"></app-grade>
       <app-account-information *ngIf="showAccountComponent"
       [messages] = "messages"
       [user]="user"></app-account-information>
       <app-colleagues-information *ngIf="showColleaguesComponent"
       [messages]="messages"
       [userRole]="user.role"
-      [users]="users"></app-colleagues-information>
+      [users]="users"
+      [darkTheme]="darkTheme"></app-colleagues-information>
+      <app-search-course *ngIf="showSearchCourseComponent"
+      [messages]="messages"
+      [searchPhrase]="searchBar.value"></app-search-course>
     </div>
     <app-settings *ngIf="showSettingsComponent"
       [messages] = "messages"
       [darkTheme] = "darkTheme"
       (darkThemeChange)="updateTheme($event)"
       (languageChange)="updateLanguage($event)"
-    class="settings"></app-settings>
+    ></app-settings>
   </div>
 
 

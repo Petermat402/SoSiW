@@ -5,7 +5,8 @@ import * as _ from 'lodash';
 import {catchError, map, tap} from 'rxjs/operators';
 import {User} from '../models/user';
 import {throwError} from 'rxjs';
-import {CourseBackend} from '../models/courseBackend';
+import {Course} from '../models/course';
+import {Grade, GradeBackend} from '../models/grade';
 
 @Injectable({
   providedIn: 'root'
@@ -104,22 +105,103 @@ export class ApiService {
     );
   }
 
-  public findCourses(searchPhrase: string, category: string) {
-    const url = `${backend}/search/${category}/${searchPhrase}`;
+  public findCourses(searchPhrase: string) {
+    const url = `${backend}/search/course/${searchPhrase}`;
     return this.httpClient.get(url, this.httpOptions).pipe(
-     map((objects: any) => {
-      const courses: CourseBackend[] = [];
-      _.each(objects, object => {
-        courses.push(new CourseBackend(
-          object.id,
-          object.name,
-          object.id_teacher
-        ));
-      });
-      return courses;
-    }),
+      map((objects: any) => {
+        const courses: Course[] = [];
+        _.each(objects, object => {
+          courses.push(new Course(
+            object.id,
+            object.name,
+            object.teacherName,
+            object.teacherSurname,
+            object.department,
+            object.email,
+            object.academicYear,
+            object.semester
+          ));
+        });
+        return courses;
+      }),
       catchError(this.handleError)
-  );
+    );
+  }
+
+  public getStudentGrades() {
+    const url = `${backend}/grades/student?`;
+    return this.httpClient.get(url, this.httpOptions).pipe(
+      map((objects: any) => {
+        const grades: Grade[] = [];
+        _.each(objects, grade => {
+          grades.push(new Grade(
+            null,
+            grade.teacherName,
+            grade.teacherSurname,
+            grade.courseName, grade.value,
+            grade.term,
+            grade.academicYear,
+            grade.semester,
+            null
+          ));
+        });
+        return grades;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  public getTeacherGrades() {
+    const url = `${backend}/grades/teacher?`;
+    return this.httpClient.get(url, this.httpOptions).pipe(
+      map((objects: any) => {
+        const grades: Grade[] = [];
+        _.each(objects, backedGrades => {
+          _.each(backedGrades, grade => {
+            grades.push(new Grade(
+              grade.studentId,
+              grade.teacherName,
+              grade.teacherSurname,
+              grade.courseName, grade.value,
+              grade.term,
+              grade.academicYear,
+              grade.semester,
+              grade.courseId
+            ));
+          });
+
+        });
+        return grades;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  public getAcademicYear() {
+    const url = `${backend}/academicYear`;
+    return this.httpClient.get(url, this.httpOptions).pipe(
+      map((object: any) => {
+        return {
+          academicYear: object.academicYear
+        };
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  public updateGrade(grade) {
+    const url = `${backend}/grade`;
+    return this.httpClient.put(url, grade, this.httpOptions).pipe(
+      map((object: any) => {
+        return new GradeBackend(
+          object.id_student,
+          object.id_course,
+          object.term,
+          object.value
+        );
+      }),
+      catchError(this.handleError)
+    );
   }
 
   public dropToken() {

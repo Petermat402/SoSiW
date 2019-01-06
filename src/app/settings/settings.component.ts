@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LanguageService} from '../services/language.service';
 import {ApiService} from '../services/api.service';
 import * as _ from 'lodash';
+import {ErrorService} from '../services/error.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-settings',
@@ -12,7 +14,9 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private languageService: LanguageService,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    private errorService: ErrorService,
+    public snackBar: MatSnackBar,) {
   }
 
   @Input() darkTheme;
@@ -23,9 +27,6 @@ export class SettingsComponent implements OnInit {
   hideRepeat = true;
   @Output() darkThemeChange = new EventEmitter<any>();
   @Output() languageChange = new EventEmitter<any>();
-  infoMessage = '';
-  showInfo = false;
-  isError = false;
 
   ngOnInit() {
     this.languagesNames = this.languageService.getAllLanguagesNames();
@@ -42,28 +43,16 @@ export class SettingsComponent implements OnInit {
 
   confirmChangePassword(oldPassword: string, newPassword: string, repeatPassword: string) {
     if (newPassword !== repeatPassword) {
-      this.infoMessage = this.messages.error.wrongRepeatedPassword;
-      this.isError = true;
-      this.showInfo = true;
+      this.errorService.handleError(424);
       return;
     }
 
     this.apiService.changePassword(btoa(oldPassword), btoa(newPassword)).subscribe(response => {
         if (response.message) {
-          this.infoMessage = response.message;
+          this.openSnackBar(response.message);
         }
       },
-      error => {
-        if (error.code === 404) {
-          this.infoMessage = this.messages.error.unauthorizedUser;
-        } else {
-          this.infoMessage = this.messages.error.unidentifiedError + '  ' + error.status;
-        }
-        this.isError = true;
-      },
-      () => {
-        this.showInfo = true;
-      }
+      error => this.errorService.handleError(error)
     );
 
 
@@ -72,26 +61,23 @@ export class SettingsComponent implements OnInit {
   confirmChangeEmail(newEmail: string) {
     this.apiService.changeEmail(newEmail).subscribe(response => {
         if (response.message) {
-          this.infoMessage = response.message;
+          this.openSnackBar(response.message);
         }
       },
-      error => {
-        if (error.code === 404) {
-          this.infoMessage = this.messages.error.unauthorizedUser;
-        } else {
-          this.infoMessage = this.messages.error.unidentifiedError + '  ' + error.status;
-        }
-        this.isError = true;
-      },
-      () => {
-        this.showInfo = true;
-      }
+      error => this.errorService.handleError(error)
     );
   }
 
   clear(...inputs) {
     _.each(inputs, input => {
       input.value = '';
+    });
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['success-color', this.darkTheme ? 'background-color-dark' : 'background-color-light']
     });
   }
 }
