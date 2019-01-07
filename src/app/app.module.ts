@@ -41,6 +41,8 @@ import {AddGradeModalComponent} from './add-grade-modal/add-grade-modal.componen
 import {EditGradeModalComponent} from './edit-grade-modal/edit-grade-modal.component';
 import {FormsModule} from '@angular/forms';
 import {ErrorService} from './services/error.service';
+import { EmailModalComponent } from './email-modal/email-modal.component';
+import { ConfirmPasswordModalComponent } from './email-modal/confirm-password-modal/confirm-password-modal.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import {ErrorService} from './services/error.service';
     GradeComponent,
     AddGradeModalComponent,
     EditGradeModalComponent,
+    EmailModalComponent,
+    ConfirmPasswordModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,9 @@ import {ErrorService} from './services/error.service';
   bootstrap: [AppComponent],
   entryComponents: [
     EditGradeModalComponent,
-    AddGradeModalComponent
+    AddGradeModalComponent,
+    EmailModalComponent,
+    ConfirmPasswordModalComponent
   ]
 })
 export class AppModule {

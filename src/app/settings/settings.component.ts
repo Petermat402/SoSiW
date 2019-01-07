@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
     private languageService: LanguageService,
     private apiService: ApiService,
     private errorService: ErrorService,
-    public snackBar: MatSnackBar,) {
+    public snackBar: MatSnackBar) {
   }
 
   @Input() darkTheme;

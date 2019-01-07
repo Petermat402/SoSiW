@@ -7,8 +7,9 @@ import {ApiService} from '../services/api.service';
 import {Router} from '@angular/router';
 import {SearchService} from '../services/search.service';
 import {Course} from '../models/course';
-import {MatTableDataSource} from '@angular/material';
+import {MatDialog, MatTableDataSource} from '@angular/material';
 import {ErrorService} from '../services/error.service';
+import {EmailModalComponent} from '../email-modal/email-modal.component';
 
 @Component({
   selector: 'app-main-page',
@@ -24,7 +25,8 @@ export class MainPageComponent implements OnInit {
               private apiService: ApiService,
               private searchService: SearchService,
               private router: Router,
-              private errorService: ErrorService) {
+              private errorService: ErrorService,
+              public emailModal: MatDialog) {
   }
 
   darkTheme = this.themeService.isDarkTheme;
@@ -70,6 +72,12 @@ export class MainPageComponent implements OnInit {
     }
   }
 
+  private openEmailModal() {
+    return this.emailModal.open(EmailModalComponent, {
+      width: '50vw'
+    });
+  }
+
   updateLanguage() {
     this.messages = this.languageService.getCurrentLanguage().messages;
   }
@@ -86,6 +94,9 @@ export class MainPageComponent implements OnInit {
   }
 
   showEmail() {
+    this.openEmailModal().afterClosed().subscribe(result => {
+      console.log('Łooo kurwa działa!!');
+    });
   }
 
   showAccountInfo() {
@@ -114,7 +125,7 @@ export class MainPageComponent implements OnInit {
             if (users) {
               this.users = new MatTableDataSource(users);
             }
-          this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
+            this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
           }, err => this.errorService.handleError(err)
         );
       }

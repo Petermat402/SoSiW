@@ -68,7 +68,6 @@ export class GradeComponent implements OnInit {
 
     this.apiService.findUsers(element.studentId.toString(), 'student').subscribe((students: User[]) => {
         if (students.length === 1) {
-          // this.user = students[0];
           const dialogRef = this.dialog.open(EditGradeModalComponent, {
             width: '50vw',
             data: {grade: element, user: students[0]}
@@ -79,7 +78,8 @@ export class GradeComponent implements OnInit {
           });
         }
       },
-      err => console.log);
+      err => this.errorService.handleError(err)
+    );
   }
 
 }

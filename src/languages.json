@@ -73,6 +73,13 @@
         "student": "Student",
         "teacher": "Teacher",
         "administrator": "Administrator"
+      },
+      "emailing": {
+        "addresses": "Email addresses",
+        "subject": "Subject",
+        "text": "Text",
+        "inputPassword": "Input password for your e-mail account",
+        "send": "Send"
       }
     }
   },
@@ -150,6 +157,13 @@
           "student": "Student",
           "teacher": "Wykładowca",
           "administrator": "Administrator"
+        },
+        "emailing": {
+          "addresses": "Adresy email",
+          "subject": "Temat",
+          "text": "Treść",
+          "inputPassword": "Wprowadź hasło do swojego konta e-mail",
+          "send": "Wyślij"
         }
       }
     },
@@ -227,6 +241,13 @@
           "student": "Student",
           "teacher": "Lehrer",
           "administrator": "Administrator"
+        },
+        "emailing": {
+          "addresses": "E-mailadressen",
+          "subject": "Thema",
+          "text": "Text",
+          "inputPassword": "Geben Sie das Passwort für Ihr E-Mail-Konto ein",
+          "send": "Senden"
         }
       }
     }]

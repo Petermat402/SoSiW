@@ -15,7 +15,7 @@ export class EditGradeModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditGradeModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { grade: Grade, user: User }, // grade: Grade,
+    @Inject(MAT_DIALOG_DATA) public data: { grade: Grade, user: User },
     private apiService: ApiService,
     private languageService: LanguageService,
     private errorService: ErrorService) {

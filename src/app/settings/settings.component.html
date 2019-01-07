@@ -22,7 +22,7 @@
         fxFlex
         fxFlexAlign="end"
         mat-stroked-button
-      (click)="confirmChangeEmail(newEmail.value)">
+        (click)="confirmChangeEmail(newEmail.value)">
         {{messages.common.confirm}}
       </button>
     </div>
@@ -58,14 +58,14 @@
         <button fxFlex
                 fxFlexAlign="start"
                 mat-stroked-button
-        (click)="clear(oldPasswordInput, newPasswordInput, repeatPasswordInput)">
+                (click)="clear(oldPasswordInput, newPasswordInput, repeatPasswordInput)">
           {{messages.common.clear}}
         </button>
         <button
           fxFlex
           fxFlexAlign="end"
           mat-stroked-button
-        (click)="confirmChangePassword(oldPasswordInput.value, newPasswordInput.value, repeatPasswordInput.value)">
+          (click)="confirmChangePassword(oldPasswordInput.value, newPasswordInput.value, repeatPasswordInput.value)">
           {{messages.common.confirm}}
         </button>
       </div>
