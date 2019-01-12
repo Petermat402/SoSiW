@@ -1,11 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {Grade} from '../models/grade';
-import {User} from '../models/user';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {ApiService} from '../services/api.service';
 import {LanguageService} from '../services/language.service';
 import {ErrorService} from '../services/error.service';
-import {EmailMessage} from '../models/emailMessage';
 import {ConfirmPasswordModalComponent} from './confirm-password-modal/confirm-password-modal.component';
 
 @Component({
@@ -23,20 +20,30 @@ export class EmailModalComponent implements OnInit {
   }
 
   messages;
-  emailMessage: EmailMessage;
+  emailMessage;
+  selectedValue = 'users';
 
   ngOnInit() {
     this.messages = this.languageService.getCurrentLanguage().messages;
-    this.emailMessage = new EmailMessage('', '', '', '');
+    this.emailMessage = {
+      addresses: '',
+      subject: '',
+      password: '',
+      text: ''
+    };
   }
 
   onConfirm() {
     const confirmPasswordRef = this.openConfirmPasswordModal();
 
     confirmPasswordRef.afterClosed().subscribe(password => {
-      this.emailMessage.password = btoa(password);
-      console.log('yuupikaeey!!');
-      this.dialogRef.close();
+      if (password) {
+        this.emailMessage.password = btoa(password);
+        this.dialogRef.close();
+      }
+
+      console.log('yuupikaeey!!=>>', password);
+
     });
   }
 

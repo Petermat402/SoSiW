@@ -1,26 +1,40 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {LanguageService} from '../../services/language.service';
+import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  constructor(private router: Router,
+              private languageService: LanguageService) {
   }
 
-  @Input() messages;
+  messages;
+  subscription: Subscription;
 
   @Output() clickLogout = new EventEmitter<any>();
   @Output() clickSettings = new EventEmitter<any>();
-  @Output() clickGrades = new EventEmitter<any>();
-  @Output() clickColleagues = new EventEmitter<any>();
   @Output() clickEmail = new EventEmitter<any>();
-  @Output() clickAccount = new EventEmitter<any>();
+
+  private subscribeOnLanguageChange() {
+    this.subscription = this.languageService.langSrc$
+      .subscribe((language: any) => {
+        this.messages = language.messages;
+      });
+    this.messages = this.languageService.getCurrentLanguage().messages;
+  }
 
   ngOnInit() {
+    this.subscribeOnLanguageChange();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   logout() {
@@ -31,20 +45,8 @@ export class MenuComponent implements OnInit {
     this.clickSettings.emit();
   }
 
-  grades() {
-    this.clickGrades.emit();
-  }
-
-  colleagues() {
-    this.clickColleagues.emit();
-  }
-
   email() {
     this.clickEmail.emit();
-  }
-
-  account() {
-    this.clickAccount.emit();
   }
 
 }

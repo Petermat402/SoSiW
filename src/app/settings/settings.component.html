@@ -8,21 +8,27 @@
     </mat-expansion-panel-header>
 
     <mat-form-field>
-      <input #newEmail matInput placeholder="{{messages.settings.newEmail}}">
+      <input #newEmailInput matInput
+             placeholder="{{messages.settings.newEmail}}"
+             [formControl]="emailFormControl"
+             [errorStateMatcher]="matcher">
+      <mat-error *ngIf="emailFormControl.hasError('email')">
+        {{messages.settings.enterValidEmail}}
+      </mat-error>
     </mat-form-field>
 
     <div fxLayout="row">
       <button fxFlex
               fxFlexAlign="start"
               mat-stroked-button
-              (click)="clear(newEmail)">
+              (click)="clear(newEmailInput)">
         {{messages.common.clear}}
       </button>
       <button
         fxFlex
         fxFlexAlign="end"
         mat-stroked-button
-        (click)="confirmChangeEmail(newEmail.value)">
+        (click)="confirmChangeEmail(newEmailInput.value)">
         {{messages.common.confirm}}
       </button>
     </div>
@@ -36,19 +42,19 @@
     </mat-expansion-panel-header>
     <div fxLayout="column">
       <mat-form-field fxFlex>
-        <input #oldPasswordInput matInput
+        <input #oldPasswordInput matInput [(ngModel)]="passwords.oldPassword"
                placeholder="{{messages.settings.oldPassword}}" [type]="hideOld ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <input #newPasswordInput matInput
+        <input #newPasswordInput matInput [(ngModel)]="passwords.newPassword"
                placeholder="{{messages.settings.newPassword}}" [type]="hideNew ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hideNew = !hideNew">{{hideNew ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
 
       <mat-form-field fxFlex>
-        <input #repeatPasswordInput matInput
+        <input #repeatPasswordInput matInput [(ngModel)]="passwords.repeatedPassword"
                placeholder="{{messages.settings.repeatNewPassword}}" [type]="hideRepeat ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hideRepeat = !hideRepeat">{{hideRepeat ? 'visibility_off' : 'visibility'}}
         </mat-icon>

@@ -59,7 +59,8 @@
         "oldPassword": "old password",
         "newPassword": "new password",
         "repeatNewPassword": "repeat new password",
-        "newEmail": "new E-mail"
+        "newEmail": "new E-mail",
+        "enterValidEmail": "Please enter valid email address"
       },
       "menu":{
         "gradeTooltip" : "Grades",
@@ -79,7 +80,10 @@
         "subject": "Subject",
         "text": "Text",
         "inputPassword": "Input password for your e-mail account",
-        "send": "Send"
+        "send": "Send",
+        "groups": "Groups",
+        "users": "Users",
+        "departments": "Departaments"
       }
     }
   },
@@ -143,7 +147,8 @@
           "oldPassword": "stare hasło",
           "newPassword": "nowe hasło",
           "repeatNewPassword": "powtórz nowe hasło",
-          "newEmail": "nowy E-mail"
+          "newEmail": "nowy E-mail",
+          "enterValidEmail": "Proszę podać prawidłowy adres e-mail"
         },
         "menu":{
           "gradeTooltip" : "Oceny",
@@ -163,7 +168,10 @@
           "subject": "Temat",
           "text": "Treść",
           "inputPassword": "Wprowadź hasło do swojego konta e-mail",
-          "send": "Wyślij"
+          "send": "Wyślij",
+          "groups": "Grupy",
+          "users": "Użytkownicy",
+          "departments": "Wydziały"
         }
       }
     },
@@ -227,7 +235,8 @@
           "oldPassword": "Altes Passwort",
           "newPassword": "Neues Kennwort",
           "repeatNewPassword": "Wiederhole das neue Passwort",
-          "newEmail": "Neues E-mail"
+          "newEmail": "Neues E-mail",
+          "enterValidEmail": "Bitte geben Sie eine gültige Email Adresse an"
         },
         "menu":{
           "gradeTooltip" : "Noten",
@@ -247,7 +256,10 @@
           "subject": "Thema",
           "text": "Text",
           "inputPassword": "Geben Sie das Passwort für Ihr E-Mail-Konto ein",
-          "send": "Senden"
+          "send": "Senden",
+          "groups": "Gruppen",
+          "users": "Benutzer",
+          "departments": "Abteilungen"
         }
       }
     }]

@@ -10,17 +10,17 @@
       <p>{{user.group ? user.group : user.departament}}</p>
     </div>
 
-      <mat-form-field fxFlex [class.white-font]="darkTheme">
-        <input matInput type="search" #searchBar>
-        <button mat-icon-button matSuffix (click)="showSearch(searchBar.value, searchCategory)">
-          <mat-icon >search</mat-icon>
-        </button>
-      </mat-form-field>
+    <mat-form-field fxFlex [class.white-font]="darkTheme">
+      <input matInput type="search" #searchBar>
+      <button mat-icon-button matSuffix (click)="showSearch(searchBar.value, searchCategory)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
 
     <div fxFlex fxLayout="row" fxLayoutGap="10px">
       <div fxFlex>
         <mat-form-field fxFlex>
-          <mat-select placeholder="{{messages.common.chooseCategory}}" [(value)]="searchCategory" required>
+          <mat-select placeholder="{{messages.common.chooseCategory}}" [(value)]="searchCategory">
             <mat-option value="student">
               {{messages.roles.student}}
             </mat-option>
@@ -43,38 +43,15 @@
   <div
     fxLayout="row"
     fxLayoutAlign="start"
-  fxLayoutGap="20px">
-
-    <app-menu [messages]="messages"
-    (clickLogout)="logout()"
-    (clickSettings)="showSettingsComponent = !showSettingsComponent"
-    (clickAccount)="showAccountInfo()"
-    (clickColleagues)="showColleagues()"
-    (clickEmail)="showEmail()"
-    (clickGrades)="showGrades()"></app-menu>
+    fxLayoutGap="20px">
+    <app-menu
+      (clickLogout)="logout()"
+      (clickSettings)="showSettingsComponent = !showSettingsComponent"
+      (clickEmail)="showEmail()"></app-menu>
     <div fxFlex>
-      <app-grade *ngIf="showGradesComponent"
-      [messages]="messages"
-      [userRole]="user.role"
-      [darkTheme]="darkTheme"></app-grade>
-      <app-account-information *ngIf="showAccountComponent"
-      [messages] = "messages"
-      [user]="user"></app-account-information>
-      <app-colleagues-information *ngIf="showColleaguesComponent"
-      [messages]="messages"
-      [userRole]="user.role"
-      [users]="users"
-      [darkTheme]="darkTheme"></app-colleagues-information>
-      <app-search-course *ngIf="showSearchCourseComponent"
-      [messages]="messages"
-      [searchPhrase]="searchBar.value"></app-search-course>
+      <router-outlet></router-outlet>
     </div>
-    <app-settings *ngIf="showSettingsComponent"
-      [messages] = "messages"
-      [darkTheme] = "darkTheme"
-      (darkThemeChange)="updateTheme($event)"
-      (languageChange)="updateLanguage($event)"
-    ></app-settings>
+    <app-settings *ngIf="showSettingsComponent"></app-settings>
   </div>
 
 

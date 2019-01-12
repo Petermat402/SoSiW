@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {ThemeService} from '../services/theme.service';
 import {User} from '../models/user';
 import {LanguageService} from '../services/language.service';
@@ -6,17 +6,18 @@ import {LoginService} from '../services/login.service';
 import {ApiService} from '../services/api.service';
 import {Router} from '@angular/router';
 import {SearchService} from '../services/search.service';
-import {Course} from '../models/course';
-import {MatDialog, MatTableDataSource} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {ErrorService} from '../services/error.service';
 import {EmailModalComponent} from '../email-modal/email-modal.component';
+import {LocalStorageService} from '../services/local-storage.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, OnDestroy {
 
   constructor(private elementRef: ElementRef,
               private themeService: ThemeService,
@@ -29,33 +30,45 @@ export class MainPageComponent implements OnInit {
               public emailModal: MatDialog) {
   }
 
-  darkTheme = this.themeService.isDarkTheme;
+  darkTheme: boolean;
   user: User;
-  users: MatTableDataSource<User>;
   messages;
+  languageSubscription: Subscription;
+  themeSubscription: Subscription;
 
   showSettingsComponent = false;
-  showGradesComponent = false;
-  showColleaguesComponent = false;
-  showEmailComponent = false;
-  showAccountComponent = false;
-  showSearchCourseComponent = false;
-
   searchCategory = 'student';
 
   ngOnInit() {
-    this.updateLanguage();
-    this.user = this.loginService.getUser();
+    this.subscribeOnThemeChange();
+    this.subscribeOnLanguageChange();
+    this.user = LocalStorageService.getUser();
   }
 
-  updateTheme() {
-    this.themeService.changeTheme();
+  ngOnDestroy() {
+    this.languageSubscription.unsubscribe();
+    this.themeSubscription.unsubscribe();
+  }
+
+  private subscribeOnThemeChange() {
+    this.themeSubscription = this.themeService.themeSrc$
+      .subscribe(darkTheme => {
+        this.darkTheme = darkTheme;
+        this.setBackground();
+      });
     this.darkTheme = this.themeService.isDarkTheme;
-    this.setBackground();
+  }
+
+  private subscribeOnLanguageChange() {
+    this.languageSubscription = this.languageService.langSrc$
+      .subscribe((language: any) => {
+        this.messages = language.messages;
+      });
+    this.messages = this.languageService.getCurrentLanguage().messages;
   }
 
   private setBackground() {
-    if (this.themeService.isDarkTheme) {
+    if (this.darkTheme) {
       this.elementRef
         .nativeElement
         .ownerDocument
@@ -78,69 +91,32 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  updateLanguage() {
-    this.messages = this.languageService.getCurrentLanguage().messages;
-  }
-
   logout() {
     this.user = null;
-    this.loginService.setUser(null);
-    this.apiService.dropToken();
-    this.router.navigate(['/login']);
-  }
+    new Promise((resolve, reject) => {
+      LocalStorageService.dropToken();
+      LocalStorageService.dropUser();
+      resolve();
+    }).then(() => {
+      this.router.navigate(['/login']);
+    });
 
-  showGrades() {
-    this.setComponentsVisibility(!this.showGradesComponent, false, false, false, false);
   }
 
   showEmail() {
     this.openEmailModal().afterClosed().subscribe(result => {
-      console.log('Łooo kurwa działa!!');
     });
-  }
-
-  showAccountInfo() {
-    this.setComponentsVisibility(false, false, false, !this.showAccountComponent, false);
-  }
-
-  showColleagues() {
-    if (!this.showColleaguesComponent) {
-      this.apiService.getColleagues().subscribe(users => {
-          if (users) {
-            this.users = new MatTableDataSource(users);
-          }
-          this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
-        },
-        err => this.errorService.handleError(err)
-      );
-    }
   }
 
   showSearch(searchPhrase: string, category: string) {
     if (category === 'course') {
-      this.setComponentsVisibility(false, false, false, false, !this.showSearchCourseComponent);
+      this.router.navigate([`main/searchCourse/${searchPhrase}`])
+        .catch(error => this.errorService.handleError(error));
     } else {
-      if (!this.showColleaguesComponent) {
-        this.apiService.findUsers(searchPhrase, category).subscribe(users => {
-            if (users) {
-              this.users = new MatTableDataSource(users);
-            }
-            this.setComponentsVisibility(false, !this.showColleaguesComponent, false, false, false);
-          }, err => this.errorService.handleError(err)
-        );
-      }
+      this.router.navigate([`main/search/${category}/${searchPhrase}`])
+        .catch(error => this.errorService.handleError(error));
     }
   }
-
-  private setComponentsVisibility(grades: boolean, colleagues: boolean, email: boolean, account: boolean, searchCourse: boolean) {
-    this.showGradesComponent = grades;
-    this.showColleaguesComponent = colleagues;
-    this.showEmailComponent = email;
-    this.showAccountComponent = account;
-    this.showSearchCourseComponent = searchCourse;
-  }
-
-
 }
 
 

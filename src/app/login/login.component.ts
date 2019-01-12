@@ -4,6 +4,7 @@ import {LanguageService} from '../services/language.service';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
 import {ErrorService} from '../services/error.service';
+import {LocalStorageService} from '../services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,19 +18,30 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private languageService: LanguageService,
     private loginService: LoginService,
     private errorService: ErrorService,
-    private router: Router
-  ) {
+    private router: Router) {
   }
 
   darkTheme = this.themeService.isDarkTheme;
   hide = true;
   messages;
   languagesShorts;
-  errorMessage = '';
+  credentials = {username: '', password: ''};
 
   ngOnInit() {
     this.messages = this.languageService.getCurrentLanguage().messages;
     this.languagesShorts = this.languageService.getAllLanguagesShorts();
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.loginService.validateToken(token).subscribe(user => {
+          LocalStorageService.setUser(user);
+          this.goToMain();
+        },
+        err => {
+          this.errorService.handleError(err);
+          LocalStorageService.dropToken();
+          LocalStorageService.dropUser();
+        });
+    }
   }
 
   ngAfterViewInit() {
@@ -45,10 +57,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/main']);
   }
 
-  sendCredentials(login: string, password: string) {
-    this.loginService.login(login, password).subscribe(user => {
+  sendCredentials() {
+    this.loginService.login(this.credentials.username, this.credentials.password).subscribe(user => {
         if (user) {
-          this.loginService.setUser(user);
+          LocalStorageService.setUser(user);
         }
       },
       err => this.errorService.handleError(err),

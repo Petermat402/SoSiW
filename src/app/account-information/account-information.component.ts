@@ -1,20 +1,36 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../models/user';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {LocalStorageService} from '../services/local-storage.service';
+import {Subscription} from 'rxjs';
+import {LanguageService} from '../services/language.service';
 
 @Component({
   selector: 'app-account-information',
   templateUrl: './account-information.component.html',
   styleUrls: ['./account-information.component.scss']
 })
-export class AccountInformationComponent implements OnInit {
+export class AccountInformationComponent implements OnInit, OnDestroy {
 
-  constructor() {
+  constructor(private languageService: LanguageService) {
   }
 
-  @Input() messages;
-  @Input() user: User;
+  messages;
+  user = LocalStorageService.getUser();
+  subscription: Subscription;
 
   ngOnInit() {
+    this.subscribeOnLanguageChange();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  private subscribeOnLanguageChange() {
+    this.subscription = this.languageService.langSrc$
+      .subscribe((language: any) => {
+        this.messages = language.messages;
+      });
+    this.messages = this.languageService.getCurrentLanguage().messages;
   }
 
 }

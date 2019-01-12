@@ -39,10 +39,14 @@ import {SearchCourseComponent} from './search-course/search-course.component';
 import {GradeComponent} from './grade/grade.component';
 import {AddGradeModalComponent} from './add-grade-modal/add-grade-modal.component';
 import {EditGradeModalComponent} from './edit-grade-modal/edit-grade-modal.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorService} from './services/error.service';
 import { EmailModalComponent } from './email-modal/email-modal.component';
 import { ConfirmPasswordModalComponent } from './email-modal/confirm-password-modal/confirm-password-modal.component';
+import {EmailService} from './services/email.service';
+import {GradeService} from './services/grade.service';
+import {SettingsService} from './services/settings.service';
+import {SearchService} from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -84,14 +88,19 @@ import { ConfirmPasswordModalComponent } from './email-modal/confirm-password-mo
     MatSortModule,
     MatDialogModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   providers: [
     ThemeService,
     ApiService,
     LanguageService,
     LoginService,
-    ErrorService
+    ErrorService,
+    EmailService,
+    GradeService,
+    SettingsService,
+    SearchService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

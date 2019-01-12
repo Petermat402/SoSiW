@@ -13,7 +13,13 @@ export class ErrorService {
   }
 
   public handleError(error) {
-    const message = error.code ? this.chooseError(error.code) : 'Unknown';
+    let message = '';
+    if (error.error instanceof ErrorEvent) {
+      message = error.error.message;
+      console.error('Error occured: ', message);
+    } else {
+      message = error.code ? this.chooseError(error.code) : error.status ? this.chooseError(error.status) : 'Unknown';
+    }
     this.snackBar.open(message, 'OK', {
       duration: 3000,
       panelClass: ['error-color', 'background-color-dark']
