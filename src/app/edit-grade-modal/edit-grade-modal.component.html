@@ -1,0 +1,27 @@
+<div mat-dialog-content>
+  <mat-card>
+   <mat-card-title>
+     {{messages.roles.student}}
+   </mat-card-title>
+  </mat-card>
+  <p class="mat-body-1">Id:  {{data.user.id}}  ;  {{messages.common.group}}:   {{data.user.group}}</p>
+  <p class="mat-body-1">{{data.user.name}}    {{data.user.surname}}</p>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <mat-card-title>
+      {{messages.common.subject}}
+    </mat-card-title>
+  </mat-card>
+  <p class="mat-body-1">{{data.grade.courseName}}</p>
+  <p class="mat-body-1">{{data.grade.academicYear}}  {{data.grade.semester}}</p>
+  <p class="mat-body-1">{{messages.common.term}}:  {{data.grade.term}}</p>
+  <mat-divider></mat-divider>
+  <h2 class="mat-body-2">{{messages.common.grade}}:</h2>
+  <mat-form-field>
+    <input matInput #newGrade >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-raised-button (click)="onNoClick()">{{messages.common.cancel}}</button>
+  <button mat-button mat-raised-button (click)="onConfirm(newGrade.value)">{{messages.common.confirm}}</button>
+</div>

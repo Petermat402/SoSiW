@@ -1,11 +1,33 @@
 @import 'themes';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 html, body{
   height: 100%
-}
-body{
-  overflow: hidden;
 }
 
 .height-100{
   height: 100%;
+}
+
+.white-font{
+  color: white;
+}
+
+.black-font{
+  color: black;
+}
+
+.error-color{
+  color: red !important;
+}
+
+.success-color{
+  color: green !important;
+}
+
+.background-color-dark {
+  background-color: #424242 !important;
+}
+
+.background-color-light {
+  background-color: white !important;
 }

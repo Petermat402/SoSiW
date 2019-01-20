@@ -1,0 +1,53 @@
+<div fxFlex
+     fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="8px"
+     class="height-100">
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.gradeTooltip}}"
+    [routerLink]="['grades']">
+    <mat-icon>school</mat-icon>
+  </button>
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.colleaguesTooltip}}"
+    [routerLink]="['colleagues']">
+    <mat-icon>contacts</mat-icon>
+  </button>
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.emailTooltip}}"
+    (click)="email()">
+    <mat-icon>drafts</mat-icon>
+  </button>
+
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.accountTooltip}}"
+    [routerLink]="['accountInformation']">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.settingsTooltip}}"
+    (click)="settings()">
+    <mat-icon>settings</mat-icon>
+  </button>
+
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.calendarTooltip}}"
+    (click)="calendar()">
+    <mat-icon>event</mat-icon>
+  </button>
+
+  <button
+    mat-fab
+    matTooltip="{{messages.menu.logoutTooltip}}"
+    (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+
+
+</div>

@@ -7,11 +7,93 @@
     "messages":{
       "common":{
         "changeThemeTooltip": "Change theme",
-        "languageWord": "Language"
+        "languageWord": "Language",
+        "confirm": "Confirm",
+        "clear": "Clear",
+        "nameAndSurname": "Name and Surname",
+        "name": "Name",
+        "surname": "Surname",
+        "pesel": "Pesel",
+        "group": "Group",
+        "department": "Department",
+        "role": "Role",
+        "idNumber": "Identification number",
+        "chooseCategory": "Choose category",
+        "subject": "Subject",
+        "warningCategory": "PLease choose category",
+        "academicYear": "Academic Year",
+        "semester": "Semester",
+        "winter": "Winter",
+        "summer": "Summer",
+        "grade": "Grade",
+        "term": "Term",
+        "action": "Action",
+        "edit": "Edit",
+        "sendEmail": "Send Email",
+        "cancel" : "Cancel"
       },
       "login":{
         "enterLogin" : "Enter your login",
-        "enterPassword": "Enter your password"
+        "enterPassword": "Enter your password",
+        "forgotPasswordTooltip": "Forgot password or login?",
+        "logInTooltip": "Log in"
+      },
+      "error":{
+        "unauthorizedUser": "Unauthorized user",
+        "unidentifiedError": "Some kind of error happened",
+        "wrongRepeatedPassword": "New and repeated Passwords does not match",
+        "failToAuthorize": "Failed to authorize token",
+        "noToken": "No token Provided",
+        "noSuchUser": "No Such User",
+        "wrongPersonAsTeacher": "Wronfg person assigned as teacher",
+        "cannotModifyGrades": "Cannot modify Grades when academic year has been closed",
+        "wrongRole": "Wrong or no role specified",
+        "wrongCredentials": "Incorrect Credentials",
+        "wrongPassword": "Incorrect Password provided",
+        "noGradeEntry": "No such Grade entry",
+        "databaseError": "Database error",
+        "invalidEmail": "Email address is not valid"
+      },
+      "settings":{
+        "changePassword": "Change Password",
+        "changeEmail": "Change E-mail",
+        "oldPassword": "old password",
+        "newPassword": "new password",
+        "repeatNewPassword": "repeat new password",
+        "newEmail": "new E-mail",
+        "enterValidEmail": "Please enter valid email address"
+      },
+      "menu":{
+        "gradeTooltip" : "Grades",
+        "colleaguesTooltip": "Colleagues",
+        "emailTooltip": "Email",
+        "accountTooltip": "Account",
+        "settingTooltip": "Settings",
+        "logoutTooltip": "Logout",
+        "calendarTooltip": "Schedule"
+      },
+      "roles": {
+        "student": "Student",
+        "teacher": "Teacher",
+        "administrator": "Administrator"
+      },
+      "emailing": {
+        "addresses": "Email addresses",
+        "subject": "Subject",
+        "text": "Text",
+        "inputPassword": "Input password for your e-mail account",
+        "send": "Send",
+        "groups": "Groups",
+        "users": "Users",
+        "departments": "Departaments"
+      },
+      "calendar": {
+        "month" : "Month",
+        "week": "Week",
+        "day": "Day",
+        "previous": "Previous",
+        "today": "Today",
+        "next": "Next"
       }
     }
   },
@@ -23,27 +105,191 @@
       "messages":{
         "common":{
           "changeThemeTooltip": "Zmień motyw",
-          "languageWord": "Język"
+          "languageWord": "Język",
+          "confirm": "Potwierdź",
+          "clear": "Wyczyść",
+          "nameAndSurname": "Imię i Nazwisko",
+          "name": "Imię",
+          "surname": "Nazwisko",
+          "pesel": "Pesel",
+          "group": "Grupa",
+          "department": "Wydział",
+          "role": "Rola",
+          "idNumber": "Numer identyfikacyjny",
+          "chooseCategory": "Wybierz kategorię",
+          "subject": "Przedmiot",
+          "warningCategory": "Wybierz kategorię",
+          "academicYear": "Rok Akademicki",
+          "semester": "Semestr",
+          "winter": "Zimowy",
+          "summer": "Letni",
+          "grade": "Ocena",
+          "term": "Termin",
+          "action": "Akcja",
+          "edit": "Edytuj",
+          "sendEmail": "Wyślij Email",
+          "cancel" : "Anuluj"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
-          "enterPassword": "Wprowadź hasło"
+          "enterPassword": "Wprowadź hasło",
+          "forgotPasswordTooltip": "Zapomniałeś hasła, albo loginu?",
+          "logInTooltip": "Zaloguj się"
+        },
+        "error":{
+          "unauthorizedUser": "Brak autoryzacji",
+          "unidentifiedError": "Wystąpił jakiś błąd",
+          "wrongRepeatedPassword": "Nowe i powtórzone hasło nie są takie same",
+          "failToAuthorize": "Nieudana autoryzacja tokenu",
+          "noToken": "Brak tokenu",
+          "noSuchUser": "Nie ma takiego użytkownika",
+          "wrongPersonAsTeacher": "Zła osoba przypisana jako wykładowca",
+          "cannotModifyGrades": "Nie można modyfikować ocen po zakończeniu roku akademickiego",
+          "wrongRole": "Zła rola lub brak roli",
+          "wrongCredentials": "Niepoprawny login lub hasło",
+          "wrongPassword": "Nieprawidłowe hasło",
+          "noGradeEntry": "Brak takiej oceny",
+          "databaseError": "Błąd bazy danych",
+          "invalidEmail": "Adres email jest niepoprawny"
+        },
+        "settings":{
+          "changePassword": "Zmień Hasło",
+          "changeEmail": "Zmień E-mail",
+          "oldPassword": "stare hasło",
+          "newPassword": "nowe hasło",
+          "repeatNewPassword": "powtórz nowe hasło",
+          "newEmail": "nowy E-mail",
+          "enterValidEmail": "Proszę podać prawidłowy adres e-mail"
+        },
+        "menu":{
+          "gradeTooltip" : "Oceny",
+          "colleaguesTooltip": "Koledzy",
+          "emailTooltip": "Email",
+          "accountTooltip": "Konto",
+          "settingTooltip": "Ustawienia",
+          "logoutTooltip": "Wyloguj",
+          "calendarTooltip": "Plan Zajęć"
+        },
+        "roles": {
+          "student": "Student",
+          "teacher": "Wykładowca",
+          "administrator": "Administrator"
+        },
+        "emailing": {
+          "addresses": "Adresy email",
+          "subject": "Temat",
+          "text": "Treść",
+          "inputPassword": "Wprowadź hasło do swojego konta e-mail",
+          "send": "Wyślij",
+          "groups": "Grupy",
+          "users": "Użytkownicy",
+          "departments": "Wydziały"
+        },
+        "calendar": {
+          "month" : "Miesiąc",
+          "week": "Tydzień",
+          "day": "Dzień",
+          "previous": "Poprzedni",
+          "today": "Teraz",
+          "next": "Następny"
         }
       }
     },
     {
       "id": 3,
       "value": "Deutsh",
-      "short": "DT",
+      "short": "DE",
       "code": "003",
       "messages":{
         "common":{
           "changeThemeTooltip": "Thema wechseln",
-          "languageWord": "Sprache"
+          "languageWord": "Sprache",
+          "confirm": "Bestätigen",
+          "clear": "Klar",
+          "nameAndSurname": "Name und Nachname",
+          "name": "Name",
+          "surname": "Nachname",
+          "pesel": "Pesel",
+          "group": "Grupe",
+          "department": "Abteilung",
+          "role": "die Partie",
+          "idNumber": "Identifikationsnummer",
+          "chooseCategory": "Kategorie auswählen",
+          "subject": "Schulfach",
+          "warningCategory": "Bitte wählen Sie eine Kategorie",
+          "academicYear": "Akademisches Jahr",
+          "semester": "Semester",
+          "winter": "Winterlich",
+          "summer": "Sommerlich",
+          "grade": "Note",
+          "term": "Begriff",
+          "action": "Aktion",
+          "edit": "Bearbeiten",
+          "sendEmail": "E-Mail senden",
+          "cancel" : "Stornieren"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
-          "enterPassword": "Geben Sie Ihr Passwort ein"
+          "enterPassword": "Geben Sie Ihr Passwort ein",
+          "forgotPasswordTooltip": "Passwort vergessen oder einloggen?",
+          "logInTooltip": "Einloggen"
+        },
+        "error":{
+          "unauthorizedUser": "Nicht autorisierter Benutzer",
+          "unidentifiedError": "Irgendein Fehler ist passiert",
+          "wrongRepeatedPassword": "Neue und wiederholte Passwörter stimmen nicht überein",
+          "failToAuthorize": "Token konnte nicht autorisiert werden",
+          "noToken": "Kein Token zur Verfügung gestellt",
+          "noSuchUser": "Kein solcher Benutzer",
+          "wrongPersonAsTeacher": "Falsche Person als Lehrer zugewiesen",
+          "cannotModifyGrades": "Die Klassen können nicht geändert werden, wenn das Schuljahr geschlossen wurde",
+          "wrongRole": "Falsche oder keine Rolle angegeben",
+          "wrongCredentials": "Incorrect Credentials",
+          "wrongPassword": "Falsches Passwort angegeben",
+          "noGradeEntry": "Keine solche Eintragung",
+          "databaseError": "Datenbankfehler",
+          "invalidEmail": "Email Adresse ist nicht gültig"
+        },
+        "settings":{
+          "changePassword": "Ändere das Passwort",
+          "changeEmail": "Ändern Sie die E-Mail",
+          "oldPassword": "Altes Passwort",
+          "newPassword": "Neues Kennwort",
+          "repeatNewPassword": "Wiederhole das neue Passwort",
+          "newEmail": "Neues E-mail",
+          "enterValidEmail": "Bitte geben Sie eine gültige Email Adresse an"
+        },
+        "menu":{
+          "gradeTooltip" : "Noten",
+          "colleaguesTooltip": "Kollegen",
+          "emailTooltip": "Email",
+          "accountTooltip": "Konto",
+          "settingTooltip": "die Einstellungen",
+          "logoutTooltip": "Ausloggen",
+          "calendarTooltip": "Zeitplan"
+        },
+        "roles": {
+          "student": "Student",
+          "teacher": "Lehrer",
+          "administrator": "Administrator"
+        },
+        "emailing": {
+          "addresses": "E-mailadressen",
+          "subject": "Thema",
+          "text": "Text",
+          "inputPassword": "Geben Sie das Passwort für Ihr E-Mail-Konto ein",
+          "send": "Senden",
+          "groups": "Gruppen",
+          "users": "Benutzer",
+          "departments": "Abteilungen"
+        },
+        "calendar": {
+          "month" : "Monat",
+          "week": "Woche",
+          "day": "Tag",
+          "previous": "Bisherige",
+          "today": "Heute",
+          "next": "Nächster"
         }
       }
     }]

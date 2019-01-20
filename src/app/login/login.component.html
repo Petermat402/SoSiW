@@ -3,38 +3,57 @@
      fxLayoutAlign="center center"
      class="height-100">
 
-  <div fxFlex
+  <div fxFlex="1 1 40%"
        fxFlexAlign="start">
     <button (click)="switchTheme()"
             mat-mini-fab=""
-    matTooltip="{{messages.common.changeThemeTooltip}}">
+            matTooltip="{{messages.common.changeThemeTooltip}}">
       <mat-icon>invert_colors</mat-icon>
     </button>
   </div>
-  <div fxFlex
+
+  <div fxFlex="2 2 60%"
        fxFlexAlign="center">
-<div fxLayout="column">
-  <mat-form-field>
-    <input matInput placeholder="{{messages.login.enterLogin}}">
-  </mat-form-field>
+    <div fxLayout="column">
+      <mat-form-field>
+        <input #loginInput (keyup.enter)="sendCredentials()" matInput
+               placeholder="{{messages.login.enterLogin}}" [(ngModel)]="credentials.username">
+      </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="{{messages.login.enterPassword}}" [type]="hide ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </mat-form-field>
-</div>
+      <mat-form-field>
+        <input #passwordInput (keyup.enter)="sendCredentials()" matInput
+               placeholder="{{messages.login.enterPassword}}" [type]="hide ? 'password' : 'text'" [(ngModel)]="credentials.password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      <div fxLayout="row">
+        <button fxFlex
+                fxFlexAlign="start"
+                mat-stroked-button
+                matTooltip="{{messages.login.forgotPasswordTooltip}}">
+          <mat-icon>contact_support</mat-icon>
+        </button>
+        <button
+          fxFlex
+          fxFlexAlign="end"
+          mat-stroked-button
+          (click)="sendCredentials()"
+          matTooltip="{{messages.login.logInTooltip}}">
+          <mat-icon>meeting_room</mat-icon>
+        </button>
+      </div>
+        <p [class.white-font]="darkTheme" class="mat-body-1">{{errorMessage}}</p>
+    </div>
+
+    <div fxFlex
+         fxFlexAlign="end">
+      <mat-form-field style="position: absolute; bottom: 0; right: 0">
+        <mat-select placeholder="{{messages.common.languageWord}}">
+          <mat-option *ngFor="let language of languagesShorts" (click)="changeLanguage(language)">{{language}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
-  <div fxFlex
-       fxFlexAlign="end">
-    <mat-form-field style="position: absolute; bottom: 0; right: 0">
-      <mat-select placeholder="{{messages.common.languageWord}}">
-        <mat-option *ngFor="let language of languagesShorts" (click)="changeLanguage(language)">{{language}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+
+
 </div>
-
-
-
-
-

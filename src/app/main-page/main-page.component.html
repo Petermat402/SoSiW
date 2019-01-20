@@ -1,0 +1,58 @@
+<div [class.light__theme]="!darkTheme"
+     fxLayout="column"
+     class="height-100">
+
+  <div fxLayout="row" fxLayoutGap="10px">
+
+    <div fxFlex class="mat-body-1" [class.white-font]="darkTheme">
+      <p>{{user.name}}</p>
+      <p>{{user.surname}}</p>
+      <p>{{user.group ? user.group : user.departament}}</p>
+    </div>
+
+    <mat-form-field fxFlex [class.white-font]="darkTheme">
+      <input matInput type="search" #searchBar>
+      <button mat-icon-button matSuffix (click)="showSearch(searchBar.value, searchCategory)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div fxFlex fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex>
+        <mat-form-field fxFlex>
+          <mat-select placeholder="{{messages.common.chooseCategory}}" [(value)]="searchCategory">
+            <mat-option value="student">
+              {{messages.roles.student}}
+            </mat-option>
+            <mat-option value="teacher">
+              {{messages.roles.teacher}}
+            </mat-option>
+            <mat-option value="course">
+              {{messages.common.subject}}
+            </mat-option>
+            <mat-option value="group">
+              {{messages.common.group}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex></div>
+    </div>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start"
+    fxLayoutGap="20px">
+    <app-menu
+      (clickLogout)="logout()"
+      (clickSettings)="showSettingsComponent = !showSettingsComponent"
+      (clickEmail)="showEmail()"></app-menu>
+    <div fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+    <app-settings *ngIf="showSettingsComponent"></app-settings>
+  </div>
+
+
+</div>
