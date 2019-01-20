@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {User} from '../models/user';
 import * as _ from 'lodash';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {LanguageService} from '../services/language.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
@@ -9,6 +9,7 @@ import {LocalStorageService} from '../services/local-storage.service';
 import {ThemeService} from '../services/theme.service';
 import {SearchService} from '../services/search.service';
 import {ErrorService} from '../services/error.service';
+import {EmailModalComponent} from '../email-modal/email-modal.component';
 
 @Component({
   selector: 'app-colleagues-information',
@@ -21,7 +22,8 @@ export class ColleaguesInformationComponent implements OnInit, OnDestroy {
               private activatedRoute: ActivatedRoute,
               private themeService: ThemeService,
               private searchService: SearchService,
-              private errorService: ErrorService) {
+              private errorService: ErrorService,
+              public emailModal: MatDialog) {
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -107,6 +109,14 @@ export class ColleaguesInformationComponent implements OnInit, OnDestroy {
   }
 
   sendEmail(element) {
+    this.openEmailModal(element.email).afterClosed().subscribe(result => {});
+  }
+
+  private openEmailModal(emailAddress: string) {
+    return this.emailModal.open(EmailModalComponent, {
+      width: '50vw',
+      data: emailAddress
+    });
   }
 
 }

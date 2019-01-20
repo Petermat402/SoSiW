@@ -6,6 +6,8 @@ import {AccountInformationComponent} from './account-information/account-informa
 import {ColleaguesInformationComponent} from './colleagues-information/colleagues-information.component';
 import {GradeComponent} from './grade/grade.component';
 import {SearchCourseComponent} from './search-course/search-course.component';
+import {CalendarComponent} from './calendar/calendar.component';
+import {CalendarAdministratorComponent} from './calendar-administrator/calendar-administrator.component';
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -17,7 +19,10 @@ export const routes: Routes = [
     {path: 'colleagues', component: ColleaguesInformationComponent},
     {path: 'search/:category/:searchPhrase', component: ColleaguesInformationComponent},
     {path: 'searchCourse/:searchPhrase', component: SearchCourseComponent},
-    {path: 'grades', component: GradeComponent}
+    {path: 'grades', component: GradeComponent},
+    {path: 'student/calendar', component: CalendarComponent},
+    {path: 'teacher/calendar', component: CalendarComponent},
+    {path: 'administrator/calendar', component: CalendarAdministratorComponent}
   ]}
 ];
 

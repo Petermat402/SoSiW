@@ -51,7 +51,8 @@
         "wrongCredentials": "Incorrect Credentials",
         "wrongPassword": "Incorrect Password provided",
         "noGradeEntry": "No such Grade entry",
-        "databaseError": "Database error"
+        "databaseError": "Database error",
+        "invalidEmail": "Email address is not valid"
       },
       "settings":{
         "changePassword": "Change Password",
@@ -68,7 +69,8 @@
         "emailTooltip": "Email",
         "accountTooltip": "Account",
         "settingTooltip": "Settings",
-        "logoutTooltip": "Logout"
+        "logoutTooltip": "Logout",
+        "calendarTooltip": "Schedule"
       },
       "roles": {
         "student": "Student",
@@ -84,6 +86,14 @@
         "groups": "Groups",
         "users": "Users",
         "departments": "Departaments"
+      },
+      "calendar": {
+        "month" : "Month",
+        "week": "Week",
+        "day": "Day",
+        "previous": "Previous",
+        "today": "Today",
+        "next": "Next"
       }
     }
   },
@@ -139,7 +149,8 @@
           "wrongCredentials": "Niepoprawny login lub hasło",
           "wrongPassword": "Nieprawidłowe hasło",
           "noGradeEntry": "Brak takiej oceny",
-          "databaseError": "Błąd bazy danych"
+          "databaseError": "Błąd bazy danych",
+          "invalidEmail": "Adres email jest niepoprawny"
         },
         "settings":{
           "changePassword": "Zmień Hasło",
@@ -156,7 +167,8 @@
           "emailTooltip": "Email",
           "accountTooltip": "Konto",
           "settingTooltip": "Ustawienia",
-          "logoutTooltip": "Wyloguj"
+          "logoutTooltip": "Wyloguj",
+          "calendarTooltip": "Plan Zajęć"
         },
         "roles": {
           "student": "Student",
@@ -172,13 +184,21 @@
           "groups": "Grupy",
           "users": "Użytkownicy",
           "departments": "Wydziały"
+        },
+        "calendar": {
+          "month" : "Miesiąc",
+          "week": "Tydzień",
+          "day": "Dzień",
+          "previous": "Poprzedni",
+          "today": "Teraz",
+          "next": "Następny"
         }
       }
     },
     {
       "id": 3,
       "value": "Deutsh",
-      "short": "DT",
+      "short": "DE",
       "code": "003",
       "messages":{
         "common":{
@@ -227,7 +247,8 @@
           "wrongCredentials": "Incorrect Credentials",
           "wrongPassword": "Falsches Passwort angegeben",
           "noGradeEntry": "Keine solche Eintragung",
-          "databaseError": "Datenbankfehler"
+          "databaseError": "Datenbankfehler",
+          "invalidEmail": "Email Adresse ist nicht gültig"
         },
         "settings":{
           "changePassword": "Ändere das Passwort",
@@ -244,7 +265,8 @@
           "emailTooltip": "Email",
           "accountTooltip": "Konto",
           "settingTooltip": "die Einstellungen",
-          "logoutTooltip": "Ausloggen"
+          "logoutTooltip": "Ausloggen",
+          "calendarTooltip": "Zeitplan"
         },
         "roles": {
           "student": "Student",
@@ -260,6 +282,14 @@
           "groups": "Gruppen",
           "users": "Benutzer",
           "departments": "Abteilungen"
+        },
+        "calendar": {
+          "month" : "Monat",
+          "week": "Woche",
+          "day": "Tag",
+          "previous": "Bisherige",
+          "today": "Heute",
+          "next": "Nächster"
         }
       }
     }]

@@ -34,6 +34,11 @@ export class GradeComponent implements OnInit, OnDestroy {
   languageSubscription: Subscription;
   themeSubscription: Subscription;
   messages;
+  academicYears: string[];
+  filterCriteria = {
+    academicYear: LocalStorageService.getAcademicYear(),
+    semester: 'summer'
+  };
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -56,7 +61,11 @@ export class GradeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscribeOnLanguageChange();
     this.subscribeOnThemeChange();
+    this.downloadAllAcademicYears();
+    this.downloadGrades();
+  }
 
+   downloadGrades() {
     if (this.userRole === 'T') {
       this.downloadTeacherGrades();
     } else {
@@ -65,7 +74,7 @@ export class GradeComponent implements OnInit, OnDestroy {
   }
 
   private downloadStudentGrades() {
-    this.gradeService.getStudentGrades().subscribe(grades => {
+    this.gradeService.getStudentGrades(this.filterCriteria).subscribe(grades => {
         if (!_.isEmpty(grades)) {
           this.grades = new MatTableDataSource(grades);
           this.setSortAndPaginator();
@@ -81,6 +90,16 @@ export class GradeComponent implements OnInit, OnDestroy {
         if (!_.isEmpty(grades)) {
           this.grades = new MatTableDataSource(grades);
           this.setSortAndPaginator();
+        }
+      },
+      err => this.errorService.handleError(err)
+    );
+  }
+
+  private downloadAllAcademicYears() {
+    this.gradeService.getAllAcademicYears().subscribe(academicYears => {
+        if (academicYears) {
+          this.academicYears = academicYears;
         }
       },
       err => this.errorService.handleError(err)

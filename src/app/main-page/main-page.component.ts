@@ -2,10 +2,7 @@ import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {ThemeService} from '../services/theme.service';
 import {User} from '../models/user';
 import {LanguageService} from '../services/language.service';
-import {LoginService} from '../services/login.service';
-import {ApiService} from '../services/api.service';
 import {Router} from '@angular/router';
-import {SearchService} from '../services/search.service';
 import {MatDialog} from '@angular/material';
 import {ErrorService} from '../services/error.service';
 import {EmailModalComponent} from '../email-modal/email-modal.component';
@@ -22,9 +19,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
   constructor(private elementRef: ElementRef,
               private themeService: ThemeService,
               private languageService: LanguageService,
-              private loginService: LoginService,
-              private apiService: ApiService,
-              private searchService: SearchService,
               private router: Router,
               private errorService: ErrorService,
               public emailModal: MatDialog) {

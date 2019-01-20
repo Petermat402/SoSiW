@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {LanguageService} from '../../services/language.service';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {LocalStorageService} from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -47,6 +48,23 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   email() {
     this.clickEmail.emit();
+  }
+
+  calendar() {
+    switch (LocalStorageService.getUser().role) {
+      case 'A': {
+        this.router.navigate(['main/administrator/calendar']);
+        break;
+      }
+      case 'T': {
+        this.router.navigate(['main/teacher/calendar']);
+        break;
+      }
+      case 'S': {
+        this.router.navigate(['main/student/calendar']);
+        break;
+      }
+    }
   }
 
 }

@@ -9,7 +9,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeService} from './services/theme.service';
 import {
-  MatButtonModule,
+  MatButtonModule, MatButtonToggleModule,
   MatCardModule,
   MatDialogModule,
   MatDividerModule,
@@ -47,6 +47,19 @@ import {EmailService} from './services/email.service';
 import {GradeService} from './services/grade.service';
 import {SettingsService} from './services/settings.service';
 import {SearchService} from './services/search.service';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarAdministratorComponent } from './calendar-administrator/calendar-administrator.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import {CommonModule, registerLocaleData} from '@angular/common';
+import localePl from '@angular/common/locales/pl';
+import localeDe from '@angular/common/locales/de';
+import {CalendarService} from './services/calendar.service';
+
+registerLocaleData(localePl, 'pl');
+registerLocaleData(localeDe, 'de');
 
 @NgModule({
   declarations: [
@@ -64,6 +77,8 @@ import {SearchService} from './services/search.service';
     EditGradeModalComponent,
     EmailModalComponent,
     ConfirmPasswordModalComponent,
+    CalendarComponent,
+    CalendarAdministratorComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,9 +102,17 @@ import {SearchService} from './services/search.service';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatButtonToggleModule,
     FormsModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    NgbModule,
+    FlatpickrModule.forRoot(),
+    CommonModule
   ],
   providers: [
     ThemeService,
@@ -100,7 +123,8 @@ import {SearchService} from './services/search.service';
     EmailService,
     GradeService,
     SettingsService,
-    SearchService
+    SearchService,
+    CalendarService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

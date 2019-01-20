@@ -1,9 +1,9 @@
 <div mat-dialog-content>
-  <mat-card>
-    <mat-form-field>
+  <mat-card fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field fxFlex="3 3 66%">
       <input matInput [(ngModel)]="emailMessage.addresses" placeholder="{{messages.emailing.addresses}}">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field fxFlex="1 1 34%">
       <mat-select [(ngModel)]="selectedValue">
         <mat-option [value]="'users'">
           {{messages.emailing.users}}

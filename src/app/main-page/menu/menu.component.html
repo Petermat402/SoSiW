@@ -37,6 +37,13 @@
 
   <button
     mat-fab
+    matTooltip="{{messages.menu.calendarTooltip}}"
+    (click)="calendar()">
+    <mat-icon>event</mat-icon>
+  </button>
+
+  <button
+    mat-fab
     matTooltip="{{messages.menu.logoutTooltip}}"
     (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>

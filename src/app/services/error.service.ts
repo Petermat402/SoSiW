@@ -65,6 +65,9 @@ export class ErrorService {
       case 454: {
         return errorMessages.noGradeEntry;
       }
+      case 455: {
+        return errorMessages
+      }
       case 500: {
         return errorMessages.databaseError;
       }

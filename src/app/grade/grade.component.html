@@ -1,6 +1,25 @@
-<mat-form-field [class.white-font]="darkTheme">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
+<mat-card fxLayout="row" fxLayoutGap="15px">
+  <mat-form-field fxFlex="1 1 15%">
+    <mat-select placeholder="{{messages.common.academicYear}}" [(value)]="filterCriteria.academicYear">
+      <mat-option *ngFor="let academicYear of academicYears" value="{{academicYear}}" (click)="downloadGrades()">{{academicYear}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="1 1 15%">
+    <mat-select placeholder="{{messages.common.semester}}" [(value)]="filterCriteria.semester">
+      <mat-option value="winter" (click)="downloadGrades()">
+        {{messages.common.winter}}
+      </mat-option>
+      <mat-option value="summer" (click)="downloadGrades()">
+        {{messages.common.summer}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="3 3 70%" [class.white-font]="darkTheme">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</mat-card>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="grades" matSort>
 

@@ -53,8 +53,8 @@ export class ApiService {
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
-  public getStudentGrades() {
-    const url = `${backend}/grades/student?`;
+  public getStudentGrades(academicYear: string, semester: string) {
+    const url = `${backend}/grades/student/${academicYear}/${semester}?`;
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
@@ -64,7 +64,7 @@ export class ApiService {
   }
 
   public getAcademicYear() {
-    const url = `${backend}/academicYear`;
+    const url = `${backend}/common/current/academicYear`;
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
@@ -72,6 +72,22 @@ export class ApiService {
     const url = `${backend}/grade`;
     return this.httpClient.put(url, grade, ApiService.httpOptions);
   }
+
+  public getAllAcademicYears() {
+    const url = `${backend}/all/academicYears`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
+  public sendEmail(emailMessage, groupOfRecepients) {
+    const url = `${backend}/email/${groupOfRecepients}`;
+    return this.httpClient.post(url, emailMessage, ApiService.httpOptions);
+  }
+
+  public getStudentsLectures() {
+    const url = `${backend}/calendar/student`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
 }
 
 export interface TokenResponse {

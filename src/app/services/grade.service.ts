@@ -12,8 +12,8 @@ export class GradeService {
   constructor(private apiService: ApiService) {
   }
 
-  getStudentGrades() {
-    return this.apiService.getStudentGrades().pipe(
+  getStudentGrades(filterCriteria: {academicYear: string, semester: string}) {
+    return this.apiService.getStudentGrades(filterCriteria.academicYear, filterCriteria.semester).pipe(
       map((objects: any) => {
         const grades: Grade[] = [];
         _.each(objects, grade => {
@@ -66,6 +66,18 @@ export class GradeService {
           object.term,
           object.value
         );
+      })
+    );
+  }
+
+  getAllAcademicYears() {
+    return this.apiService.getAllAcademicYears().pipe(
+      map((objects: any) => {
+        const academicYears: string[] = [];
+        _.each(objects, object => {
+          academicYears.push(object.academicYear);
+        });
+        return academicYears;
       })
     );
   }
