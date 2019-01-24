@@ -1,5 +1,11 @@
 # Sosiw
 
+This is project for my studies. 
+It is a light version of system for students and teachers.
+In this system teachers can see what grades they have putted in.
+They also can see details about their account and other standard things what is requred for teacher to work.
+Students can see their grades from any subject they are in. Similar to teacher, they can see their schedule of subjects, they can search for students, groups etc.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
 ## Development server
