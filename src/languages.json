@@ -31,7 +31,8 @@
         "edit": "Edit",
         "sendEmail": "Send Email",
         "cancel" : "Cancel",
-        "room": "Room"
+        "room": "Room",
+        "reminder": "Remind me everyday about next day's subjects"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -130,7 +131,8 @@
           "edit": "Edytuj",
           "sendEmail": "Wyślij Email",
           "cancel" : "Anuluj",
-          "room": "Sala"
+          "room": "Sala",
+          "reminder": "Przypominaj mi codziennie o zajęciach następnego dnia"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -229,7 +231,8 @@
           "edit": "Bearbeiten",
           "sendEmail": "E-Mail senden",
           "cancel" : "Stornieren",
-          "room": "Raume"
+          "room": "Raume",
+          "reminder": "Erinnere mich jeden Tag an die Themen des nächsten Tages"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",

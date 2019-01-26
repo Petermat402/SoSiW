@@ -6,5 +6,7 @@ export class User {
               public email: string,
               public group: string,
               public departament: string,
-              public role: string) {}
+              public role: string,
+              public language: string,
+              public reminder: boolean) {}
 }
