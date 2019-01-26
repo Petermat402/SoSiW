@@ -30,7 +30,8 @@
         "action": "Action",
         "edit": "Edit",
         "sendEmail": "Send Email",
-        "cancel" : "Cancel"
+        "cancel" : "Cancel",
+        "room": "Room"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -128,7 +129,8 @@
           "action": "Akcja",
           "edit": "Edytuj",
           "sendEmail": "Wyślij Email",
-          "cancel" : "Anuluj"
+          "cancel" : "Anuluj",
+          "room": "Sala"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -226,7 +228,8 @@
           "action": "Aktion",
           "edit": "Bearbeiten",
           "sendEmail": "E-Mail senden",
-          "cancel" : "Stornieren"
+          "cancel" : "Stornieren",
+          "room": "Raume"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",

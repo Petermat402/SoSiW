@@ -88,6 +88,11 @@ export class ApiService {
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
+  public getTeachersLectures() {
+    const url = `${backend}/calendar/teacher`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
 }
 
 export interface TokenResponse {
