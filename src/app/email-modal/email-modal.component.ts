@@ -46,6 +46,7 @@ export class EmailModalComponent implements OnInit {
     confirmPasswordRef.afterClosed().subscribe(password => {
       if (password) {
         this.emailMessage.password = btoa(password);
+        this.emailMessage.addresses = this.emailMessage.addresses.toLowerCase();
         this.emailService.sendEmail(this.emailMessage, this.selectedValue)
           .subscribe(info => {
             },

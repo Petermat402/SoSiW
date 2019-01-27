@@ -18,7 +18,6 @@ export class EntryComponent implements OnInit {
 
   ngOnInit() {
     this.languageService.loadDefaultLanguage();
-    this.apiService.getAcademicYear();
     this.router.navigate(['/login']);
   }
 

@@ -58,8 +58,8 @@ export class ApiService {
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
-  public getTeacherGrades() {
-    const url = `${backend}/grades/teacher?`;
+  public getTeacherGrades(academicYear: string, semester: string) {
+    const url = `${backend}/grades/teacher/${academicYear}/${semester}?`;
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
@@ -101,6 +101,18 @@ export class ApiService {
   public updateReminder(reminder: boolean) {
     const url = `${backend}/reminder`;
     return this.httpClient.put(url, {reminder: reminder}, ApiService.httpOptions);
+  }
+
+  public postChangedPasswords(newPassword: string, token: string) {
+    const url = `${backend}/recovery/password`;
+    return this.httpClient.post(url, {password: newPassword}, {
+      headers: new HttpHeaders().set('token', token).set('Content-Type', 'application/json')
+    });
+  }
+
+  public sendRecoveryPasswordRequest(login: string) {
+    const url = `${backend}/recovery`;
+    return this.httpClient.put(url, {login: login}, ApiService.httpOptions);
   }
 
 }
