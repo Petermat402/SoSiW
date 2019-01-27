@@ -58,7 +58,9 @@ export class SearchService {
           object.email,
           object.group,
           object.departament,
-          object.role)
+          object.role,
+          object.language,
+          false)
         );
       });
       return users;

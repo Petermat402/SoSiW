@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeService} from './services/theme.service';
 import {
   MatButtonModule, MatButtonToggleModule,
-  MatCardModule,
+  MatCardModule, MatCheckboxModule,
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
@@ -112,7 +112,8 @@ registerLocaleData(localeDe, 'de');
     }),
     NgbModule,
     FlatpickrModule.forRoot(),
-    CommonModule
+    CommonModule,
+    MatCheckboxModule
   ],
   providers: [
     ThemeService,

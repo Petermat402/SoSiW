@@ -88,6 +88,21 @@ export class ApiService {
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
+  public getTeachersLectures() {
+    const url = `${backend}/calendar/teacher`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
+  public updateLanguage(language: string) {
+    const url = `${backend}/language/change`;
+    return this.httpClient.put(url, {language: language.toLowerCase()}, ApiService.httpOptions);
+  }
+
+  public updateReminder(reminder: boolean) {
+    const url = `${backend}/reminder`;
+    return this.httpClient.put(url, {reminder: reminder}, ApiService.httpOptions);
+  }
+
 }
 
 export interface TokenResponse {

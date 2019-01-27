@@ -31,7 +31,9 @@ export class LoginService {
         object.user.email,
         object.user.group,
         object.user.departament,
-        object.user.role
+        object.user.role,
+        object.user.language,
+        object.user.reminder
       ))
     );
   }
@@ -62,7 +64,9 @@ export class LoginService {
         object.user.email,
         object.user.group,
         object.user.departament,
-        object.user.role
+        object.user.role,
+        object.user.language,
+        object.user.reminder
       ))
     );
   }

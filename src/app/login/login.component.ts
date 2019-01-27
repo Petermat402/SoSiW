@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     if (token) {
       this.loginService.validateToken(token).subscribe(user => {
           LocalStorageService.setUser(user);
+          this.languageService.setCurrentLanguageByShort(user.language.toUpperCase());
           this.goToMain();
         },
         err => {
@@ -61,6 +62,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loginService.login(this.credentials.username, this.credentials.password).subscribe(user => {
         if (user) {
           LocalStorageService.setUser(user);
+          this.languageService.setCurrentLanguageByShort(user.language.toUpperCase());
         }
       },
       err => this.errorService.handleError(err),
