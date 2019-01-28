@@ -6,6 +6,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {ErrorService} from '../services/error.service';
 import {ControlPanelService} from '../services/control-panel.service';
 import {MatSnackBar} from '@angular/material';
+import {ApiService} from '../services/api.service';
 
 @Component({
   selector: 'app-control-panel',
@@ -18,7 +19,8 @@ export class ControlPanelComponent implements OnInit, OnDestroy {
               private themeService: ThemeService,
               private errorService: ErrorService,
               private controlPanelService: ControlPanelService,
-              public snackBar: MatSnackBar) {
+              public snackBar: MatSnackBar,
+              private apiService: ApiService) {
   }
 
   messages;
@@ -38,6 +40,7 @@ export class ControlPanelComponent implements OnInit, OnDestroy {
     group: ''
   };
 
+
   usernameFC = new FormControl('', Validators.required);
   passwordFC = new FormControl('', Validators.required);
   nameFC = new FormControl('', Validators.required);
@@ -49,22 +52,36 @@ export class ControlPanelComponent implements OnInit, OnDestroy {
   ]);
   departmentFC = new FormControl('', Validators.required);
 
+
+  userLoginFC = new FormControl('', Validators.required);
+
+
+  activeUser = {
+    messageActive: '',
+    userLogin: '',
+    id: -1
+  };
+
   languageSubscription: Subscription;
   themeSubscription: Subscription;
 
   ngOnInit() {
     this.subscribeOnLanguageChange();
+
     this.subscribeOnThemeChange();
+
     this.languagesShorts = this.languageService.getAllLanguagesShorts();
   }
 
 
   private subscribeOnLanguageChange() {
-    this.languageSubscription = this.languageService.langSrc$
+    this
+      .languageSubscription = this.languageService.langSrc$
       .subscribe((language: any) => {
         this.messages = language.messages;
       });
-    this.messages = this.languageService.getCurrentLanguage().messages;
+    this
+      .messages = this.languageService.getCurrentLanguage().messages;
   }
 
   private subscribeOnThemeChange() {
@@ -120,7 +137,47 @@ export class ControlPanelComponent implements OnInit, OnDestroy {
     };
   }
 
-  openSnackBar(message: string) {
+  clearLogin() {
+    this.activeUser.userLogin = '';
+    this.activeUser.messageActive = '';
+    this.activeUser.id = -1;
+  }
+
+  checkLogin() {
+    this.apiService.checkIfActiveUser(this.activeUser.userLogin).subscribe((response: any) => {
+      if (response.message) {
+        this.activeUser.messageActive = response.message;
+        this.activeUser.id = response.id;
+      }
+    }, err => this.errorService.handleError(err));
+
+  }
+
+  sendActivateDeactivate() {
+    if (this.activeUser.id === -1) {
+      return;
+    }
+
+    if (this.activeUser.messageActive === 'active') {
+      this.apiService.sendDeactivate(this.activeUser.id).subscribe((response: any) => {
+        if (response.message) {
+          this.openSnackBar(this.messages.common.success);
+          this.clearLogin();
+        }
+      }, err => this.errorService.handleError(err));
+    } else {
+      this.apiService.sendActivate(this.activeUser.id).subscribe((response: any) => {
+        if (response.message) {
+          this.openSnackBar(this.messages.common.success);
+          this.clearLogin();
+        }
+      }, err => this.errorService.handleError(err));
+    }
+  }
+
+
+  openSnackBar(message: string
+  ) {
     this.snackBar.open(message, 'OK', {
       duration: 3000,
       panelClass: ['success-color', this.darkTheme ? 'background-color-dark' : 'background-color-light']

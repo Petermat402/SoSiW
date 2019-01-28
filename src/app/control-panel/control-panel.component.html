@@ -88,7 +88,39 @@
       <mat-expansion-panel-header>
         {{messages.controlPanel.activateDeactivate}}
       </mat-expansion-panel-header>
-
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.controlPanel.username}}" [(ngModel)]="activeUser.userLogin" [formControl]="userLoginFC">
+        <mat-error *ngIf="userLoginFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-card *ngIf="activeUser.messageActive === 'active'" class="green">
+        <mat-icon>done</mat-icon>
+        {{messages.common.active}}
+      </mat-card>
+      <mat-card *ngIf="activeUser.messageActive === 'inactive'" class="red">
+        <mat-icon>clear</mat-icon>
+        {{messages.common.inactive}}
+      </mat-card>
+      <div fxLayout="row">
+        <button fxFlex
+                fxFlexAlign="start"
+                mat-stroked-button
+                (click)="clearLogin()">
+          {{messages.common.clear}}
+        </button>
+        <button fxFlex
+                mat-stroked-button
+                (click)="checkLogin()">
+          {{messages.common.check}}
+        </button>
+        <button
+          fxFlex
+          fxFlexAlign="end"
+          mat-stroked-button
+          (click)="sendActivateDeactivate()">
+          {{activeUser.messageActive === 'inactive' ? messages.controlPanel.activate : messages.controlPanel.deactivate}}
+        </button>
+      </div>
     </mat-expansion-panel>
   </div>
 

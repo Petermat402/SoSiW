@@ -35,7 +35,10 @@
         "reminder": "Remind me everyday about next day's subjects",
         "success": "Success",
         "isRequired": "Is Required",
-        "validEmail": "Valid email address is required"
+        "validEmail": "Valid email address is required",
+        "active": "Active",
+        "inactive": "Inactive",
+        "check": "Check"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -108,7 +111,9 @@
         "activateDeactivate": "Activate/Deactivate User",
         "addCourse": "Add Course",
         "username": "Username",
-        "password": "Password"
+        "password": "Password",
+        "activate": "Activate",
+        "deactivate": "Deactivate"
       }
     }
   },
@@ -148,7 +153,10 @@
           "reminder": "Przypominaj mi codziennie o zajęciach następnego dnia",
           "success": "Sukces",
           "isRequired": "Jest wymagane",
-          "validEmail": "Prawidłowy adres email jest wymagany"
+          "validEmail": "Prawidłowy adres email jest wymagany",
+          "active": "Aktywny",
+          "inactive": "Nieaktywny",
+          "check": "Sprawdź"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -221,7 +229,9 @@
           "activateDeactivate": "Aktywuj/Dezaktywuj użytkownika",
           "addCourse": "Dodaj przedmiot",
           "username": "Nazwa użytkownika",
-          "password": "Hasło"
+          "password": "Hasło",
+          "activate": "Aktywuj",
+          "deactivate": "Dezaktywuj"
         }
       }
     },
@@ -261,7 +271,10 @@
           "reminder": "Erinnere mich jeden Tag an die Themen des nächsten Tages",
           "success": "Erfolg",
           "isRequired": "Wird benötigt",
-          "validEmail": "Eine gültige E-Mail-Adresse ist erforderlich"
+          "validEmail": "Eine gültige E-Mail-Adresse ist erforderlich",
+          "active": "Aktiv",
+          "inactive": "Inaktiv",
+          "check": "Prüfen"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
@@ -334,7 +347,9 @@
           "activateDeactivate": "Benutzer aktivieren / deaktivieren",
           "addCourse": "Kurs hinzufügen",
           "username": "Nutzername",
-          "password": "Passwort"
+          "password": "Passwort",
+          "activate": "aktivieren",
+          "deactivate": "Deaktivieren"
         }
       }
     }]

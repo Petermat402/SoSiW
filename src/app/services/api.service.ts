@@ -125,6 +125,21 @@ export class ApiService {
     return this.httpClient.post(url, newUser, ApiService.httpOptions);
   }
 
+  public checkIfActiveUser(username: string) {
+    const url = `${backend}/active/${username}`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
+  public sendActivate(id: number) {
+    const url = `${backend}/activate`;
+    return this.httpClient.put(url, {id: id}, ApiService.httpOptions);
+  }
+
+  public sendDeactivate(id: number) {
+    const url = `${backend}/deactivate`;
+    return this.httpClient.put(url, {id: id}, ApiService.httpOptions);
+  }
+
 }
 
 export interface TokenResponse {
