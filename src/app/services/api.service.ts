@@ -115,6 +115,16 @@ export class ApiService {
     return this.httpClient.put(url, {login: login}, ApiService.httpOptions);
   }
 
+  public checkUsername(username: string) {
+    const url = `${backend}/register/username/${username}`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
+  public postRegister(newUser) {
+    const url = `${backend}/register`;
+    return this.httpClient.post(url, newUser, ApiService.httpOptions);
+  }
+
 }
 
 export interface TokenResponse {

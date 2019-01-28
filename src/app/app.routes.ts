@@ -9,22 +9,27 @@ import {SearchCourseComponent} from './search-course/search-course.component';
 import {CalendarComponent} from './calendar/calendar.component';
 import {CalendarAdministratorComponent} from './calendar-administrator/calendar-administrator.component';
 import {PasswordRecoveryComponent} from './password-recovery/password-recovery.component';
+import {ControlPanelComponent} from './control-panel/control-panel.component';
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: EntryComponent},
-  {path: 'main', component: MainPageComponent,
-  children: [
-    {path: '', redirectTo: 'main', pathMatch: 'full'},
-    {path: 'accountInformation', component: AccountInformationComponent},
-    {path: 'colleagues', component: ColleaguesInformationComponent},
-    {path: 'search/:category/:searchPhrase', component: ColleaguesInformationComponent},
-    {path: 'searchCourse/:searchPhrase', component: SearchCourseComponent},
-    {path: 'grades', component: GradeComponent},
-    {path: 'student/calendar', component: CalendarComponent},
-    {path: 'teacher/calendar', component: CalendarComponent},
-    {path: 'administrator/calendar', component: CalendarAdministratorComponent}
-  ]},
-  {path: 'recovery/:token', component: PasswordRecoveryComponent}
+  {
+    path: 'main', component: MainPageComponent,
+    children: [
+      {path: '', redirectTo: 'main', pathMatch: 'full'},
+      {path: 'accountInformation', component: AccountInformationComponent},
+      {path: 'colleagues', component: ColleaguesInformationComponent},
+      {path: 'search/:category/:searchPhrase', component: ColleaguesInformationComponent},
+      {path: 'searchCourse/:searchPhrase', component: SearchCourseComponent},
+      {path: 'grades', component: GradeComponent},
+      {path: 'student/calendar', component: CalendarComponent},
+      {path: 'teacher/calendar', component: CalendarComponent},
+      {path: 'administrator/calendar', component: CalendarAdministratorComponent},
+      {path: 'control/panel', component: ControlPanelComponent}
+    ]
+  },
+  {path: 'recovery/:token', component: PasswordRecoveryComponent},
+
 ];
 

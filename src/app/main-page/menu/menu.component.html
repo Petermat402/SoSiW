@@ -3,12 +3,22 @@
      fxLayoutAlign="center center"
      fxLayoutGap="8px"
      class="height-100">
-  <button
-    mat-fab
-    matTooltip="{{messages.menu.gradeTooltip}}"
-    [routerLink]="['grades']">
-    <mat-icon>school</mat-icon>
-  </button>
+  <div *ngIf="userRole === 'A'; else grades">
+    <button
+      mat-fab
+      matTooltip="{{messages.menu.controlPanelTooltip}}"
+      [routerLink]="['control/panel']">
+      <mat-icon>library_books</mat-icon>
+    </button>
+  </div>
+  <ng-template #grades>
+    <button
+      mat-fab
+      matTooltip="{{messages.menu.gradeTooltip}}"
+      [routerLink]="['grades']">
+      <mat-icon>school</mat-icon>
+    </button>
+  </ng-template>
   <button
     mat-fab
     matTooltip="{{messages.menu.colleaguesTooltip}}"

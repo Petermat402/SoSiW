@@ -62,6 +62,7 @@ import localeDe from '@angular/common/locales/de';
 import {CalendarService} from './services/calendar.service';
 import {PasswordRecoveryComponent} from './password-recovery/password-recovery.component';
 import {ForgotPasswordModalComponent} from './forgot-password-modal/forgot-password-modal.component';
+import { ControlPanelComponent } from './control-panel/control-panel.component';
 
 registerLocaleData(localePl, 'pl');
 registerLocaleData(localeDe, 'de');
@@ -86,6 +87,7 @@ registerLocaleData(localeDe, 'de');
     CalendarAdministratorComponent,
     PasswordRecoveryComponent,
     ForgotPasswordModalComponent,
+    ControlPanelComponent,
   ],
   imports: [
     BrowserModule,

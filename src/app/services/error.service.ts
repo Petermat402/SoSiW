@@ -29,6 +29,9 @@ export class ErrorService {
   private chooseError(errorCode) {
     const errorMessages = this.languageService.getCurrentLanguage().messages.error;
     switch (errorCode) {
+      case 302: {
+        return errorMessages.foundUsername;
+      }
       case 400: {
         return errorMessages.unidentifiedError;
       }
@@ -67,6 +70,9 @@ export class ErrorService {
       }
       case 455: {
         return errorMessages
+      }
+      case 456: {
+        return errorMessages.fieldNoComplete;
       }
       case 500: {
         return errorMessages.databaseError;

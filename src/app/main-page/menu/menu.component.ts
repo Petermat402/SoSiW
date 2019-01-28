@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   messages;
   subscription: Subscription;
+  userRole = LocalStorageService.getUser().role;
 
   @Output() clickLogout = new EventEmitter<any>();
   @Output() clickSettings = new EventEmitter<any>();
@@ -38,6 +39,9 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  controlPanel() {
+  }
+
   logout() {
     this.clickLogout.emit();
   }
@@ -51,7 +55,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   calendar() {
-    switch (LocalStorageService.getUser().role) {
+    switch (this.userRole) {
       case 'A': {
         this.router.navigate(['main/administrator/calendar']);
         break;
