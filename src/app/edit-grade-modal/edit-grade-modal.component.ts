@@ -41,15 +41,17 @@ export class EditGradeModalComponent implements OnInit {
       value: value
     };
     this.apiService.updateGrade(gradeToSend).subscribe((grade: GradeBackend) => {
-        if (grade.studentId === this.data.grade.studentId &&
-          grade.courseId === this.data.grade.courseId &&
-          grade.term === this.data.grade.term) {
+        if (grade) {
           this.data.grade.value = grade.value;
         }
+        this.dialogRef.close(this.data.grade.value);
       },
-      err => this.errorService.handleError(err)
+      err => {
+        this.errorService.handleError(err);
+        this.dialogRef.close();
+      }
     );
-    this.dialogRef.close();
+
   }
 
 }

@@ -65,7 +65,7 @@ export class GradeComponent implements OnInit, OnDestroy {
     this.downloadGrades();
   }
 
-   downloadGrades() {
+  downloadGrades() {
     if (this.userRole === 'T') {
       this.downloadTeacherGrades();
     } else {
@@ -132,7 +132,10 @@ export class GradeComponent implements OnInit, OnDestroy {
           });
 
           dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            if (result) {
+              element.value = result;
+            }
+            console.log('The dialog was closed==>>', result);
           });
         }
       },
