@@ -9,8 +9,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ThemeService} from './services/theme.service';
 import {
-  MatButtonModule, MatButtonToggleModule,
-  MatCardModule, MatCheckboxModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
@@ -19,7 +21,8 @@ import {
   MatInputModule,
   MatListModule,
   MatPaginatorModule,
-  MatSelectModule, MatSnackBarModule,
+  MatSelectModule,
+  MatSnackBarModule,
   MatSortModule,
   MatTableModule,
   MatTabsModule,
@@ -41,22 +44,25 @@ import {AddGradeModalComponent} from './add-grade-modal/add-grade-modal.componen
 import {EditGradeModalComponent} from './edit-grade-modal/edit-grade-modal.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorService} from './services/error.service';
-import { EmailModalComponent } from './email-modal/email-modal.component';
-import { ConfirmPasswordModalComponent } from './email-modal/confirm-password-modal/confirm-password-modal.component';
+import {EmailModalComponent} from './email-modal/email-modal.component';
+import {ConfirmPasswordModalComponent} from './email-modal/confirm-password-modal/confirm-password-modal.component';
 import {EmailService} from './services/email.service';
 import {GradeService} from './services/grade.service';
 import {SettingsService} from './services/settings.service';
 import {SearchService} from './services/search.service';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { CalendarComponent } from './calendar/calendar.component';
-import { CalendarAdministratorComponent } from './calendar-administrator/calendar-administrator.component';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {CalendarComponent} from './calendar/calendar.component';
+import {CalendarAdministratorComponent} from './calendar-administrator/calendar-administrator.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FlatpickrModule } from 'angularx-flatpickr';
+import {FlatpickrModule} from 'angularx-flatpickr';
 import {CommonModule, registerLocaleData} from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import localeDe from '@angular/common/locales/de';
 import {CalendarService} from './services/calendar.service';
+import {PasswordRecoveryComponent} from './password-recovery/password-recovery.component';
+import {ForgotPasswordModalComponent} from './forgot-password-modal/forgot-password-modal.component';
+import { ControlPanelComponent } from './control-panel/control-panel.component';
 
 registerLocaleData(localePl, 'pl');
 registerLocaleData(localeDe, 'de');
@@ -79,6 +85,9 @@ registerLocaleData(localeDe, 'de');
     ConfirmPasswordModalComponent,
     CalendarComponent,
     CalendarAdministratorComponent,
+    PasswordRecoveryComponent,
+    ForgotPasswordModalComponent,
+    ControlPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,14 +134,15 @@ registerLocaleData(localeDe, 'de');
     GradeService,
     SettingsService,
     SearchService,
-    CalendarService
+    CalendarService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     EditGradeModalComponent,
     AddGradeModalComponent,
     EmailModalComponent,
-    ConfirmPasswordModalComponent
+    ConfirmPasswordModalComponent,
+    ForgotPasswordModalComponent
   ]
 })
 export class AppModule {

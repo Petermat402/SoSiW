@@ -65,7 +65,7 @@ export class GradeComponent implements OnInit, OnDestroy {
     this.downloadGrades();
   }
 
-   downloadGrades() {
+  downloadGrades() {
     if (this.userRole === 'T') {
       this.downloadTeacherGrades();
     } else {
@@ -75,7 +75,7 @@ export class GradeComponent implements OnInit, OnDestroy {
 
   private downloadStudentGrades() {
     this.gradeService.getStudentGrades(this.filterCriteria).subscribe(grades => {
-        if (!_.isEmpty(grades)) {
+        if (grades) {
           this.grades = new MatTableDataSource(grades);
           this.setSortAndPaginator();
         }
@@ -86,8 +86,8 @@ export class GradeComponent implements OnInit, OnDestroy {
 
   private downloadTeacherGrades() {
     this.displayedColumns = ['courseName', 'academicYear', 'semester', 'value', 'term', 'studentId', 'action'];
-    this.gradeService.getTeacherGrades().subscribe(grades => {
-        if (!_.isEmpty(grades)) {
+    this.gradeService.getTeacherGrades(this.filterCriteria).subscribe(grades => {
+        if (grades) {
           this.grades = new MatTableDataSource(grades);
           this.setSortAndPaginator();
         }
@@ -132,7 +132,10 @@ export class GradeComponent implements OnInit, OnDestroy {
           });
 
           dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            if (result) {
+              element.value = result;
+            }
+            console.log('The dialog was closed==>>', result);
           });
         }
       },

@@ -32,7 +32,13 @@
         "sendEmail": "Send Email",
         "cancel" : "Cancel",
         "room": "Room",
-        "reminder": "Remind me everyday about next day's subjects"
+        "reminder": "Remind me everyday about next day's subjects",
+        "success": "Success",
+        "isRequired": "Is Required",
+        "validEmail": "Valid email address is required",
+        "active": "Active",
+        "inactive": "Inactive",
+        "check": "Check"
       },
       "login":{
         "enterLogin" : "Enter your login",
@@ -54,7 +60,9 @@
         "wrongPassword": "Incorrect Password provided",
         "noGradeEntry": "No such Grade entry",
         "databaseError": "Database error",
-        "invalidEmail": "Email address is not valid"
+        "invalidEmail": "Email address is not valid",
+        "fieldNoComplete": "Please fill all fields",
+        "foundUsername": "This username already exists"
       },
       "settings":{
         "changePassword": "Change Password",
@@ -72,7 +80,8 @@
         "accountTooltip": "Account",
         "settingTooltip": "Settings",
         "logoutTooltip": "Logout",
-        "calendarTooltip": "Schedule"
+        "calendarTooltip": "Schedule",
+        "controlPanelTooltip": "Control Panel"
       },
       "roles": {
         "student": "Student",
@@ -96,6 +105,15 @@
         "previous": "Previous",
         "today": "Today",
         "next": "Next"
+      },
+      "controlPanel": {
+        "registerUser": "Register User",
+        "activateDeactivate": "Activate/Deactivate User",
+        "addCourse": "Add Course",
+        "username": "Username",
+        "password": "Password",
+        "activate": "Activate",
+        "deactivate": "Deactivate"
       }
     }
   },
@@ -132,7 +150,13 @@
           "sendEmail": "Wyślij Email",
           "cancel" : "Anuluj",
           "room": "Sala",
-          "reminder": "Przypominaj mi codziennie o zajęciach następnego dnia"
+          "reminder": "Przypominaj mi codziennie o zajęciach następnego dnia",
+          "success": "Sukces",
+          "isRequired": "Jest wymagane",
+          "validEmail": "Prawidłowy adres email jest wymagany",
+          "active": "Aktywny",
+          "inactive": "Nieaktywny",
+          "check": "Sprawdź"
         },
         "login":{
           "enterLogin" : "Wprowadź login",
@@ -154,7 +178,9 @@
           "wrongPassword": "Nieprawidłowe hasło",
           "noGradeEntry": "Brak takiej oceny",
           "databaseError": "Błąd bazy danych",
-          "invalidEmail": "Adres email jest niepoprawny"
+          "invalidEmail": "Adres email jest niepoprawny",
+          "fieldNoComplete": "Proszę wypełnić wszystkie pola",
+          "foundUsername": "Ta nazwa użytkownia już istnieje"
         },
         "settings":{
           "changePassword": "Zmień Hasło",
@@ -172,7 +198,8 @@
           "accountTooltip": "Konto",
           "settingTooltip": "Ustawienia",
           "logoutTooltip": "Wyloguj",
-          "calendarTooltip": "Plan Zajęć"
+          "calendarTooltip": "Plan Zajęć",
+          "controlPanelTooltip": "Panel Administratora"
         },
         "roles": {
           "student": "Student",
@@ -196,6 +223,15 @@
           "previous": "Poprzedni",
           "today": "Teraz",
           "next": "Następny"
+        },
+        "controlPanel": {
+          "registerUser": "Zarejestruj użytkownika",
+          "activateDeactivate": "Aktywuj/Dezaktywuj użytkownika",
+          "addCourse": "Dodaj przedmiot",
+          "username": "Nazwa użytkownika",
+          "password": "Hasło",
+          "activate": "Aktywuj",
+          "deactivate": "Dezaktywuj"
         }
       }
     },
@@ -232,7 +268,13 @@
           "sendEmail": "E-Mail senden",
           "cancel" : "Stornieren",
           "room": "Raume",
-          "reminder": "Erinnere mich jeden Tag an die Themen des nächsten Tages"
+          "reminder": "Erinnere mich jeden Tag an die Themen des nächsten Tages",
+          "success": "Erfolg",
+          "isRequired": "Wird benötigt",
+          "validEmail": "Eine gültige E-Mail-Adresse ist erforderlich",
+          "active": "Aktiv",
+          "inactive": "Inaktiv",
+          "check": "Prüfen"
         },
         "login":{
           "enterLogin" : "Geben Sie Ihren Login ein",
@@ -254,7 +296,9 @@
           "wrongPassword": "Falsches Passwort angegeben",
           "noGradeEntry": "Keine solche Eintragung",
           "databaseError": "Datenbankfehler",
-          "invalidEmail": "Email Adresse ist nicht gültig"
+          "invalidEmail": "Email Adresse ist nicht gültig",
+          "fieldNoComplete": "Bitte alle Felder ausfüllen",
+          "foundUsername": "Dieser Benutzername ist schon vergeben"
         },
         "settings":{
           "changePassword": "Ändere das Passwort",
@@ -272,7 +316,8 @@
           "accountTooltip": "Konto",
           "settingTooltip": "die Einstellungen",
           "logoutTooltip": "Ausloggen",
-          "calendarTooltip": "Zeitplan"
+          "calendarTooltip": "Zeitplan",
+          "controlPanelTooltip": "Schalttafel"
         },
         "roles": {
           "student": "Student",
@@ -296,6 +341,15 @@
           "previous": "Bisherige",
           "today": "Heute",
           "next": "Nächster"
+        },
+        "controlPanel": {
+          "registerUser": "Benutzer registrieren",
+          "activateDeactivate": "Benutzer aktivieren / deaktivieren",
+          "addCourse": "Kurs hinzufügen",
+          "username": "Nutzername",
+          "password": "Passwort",
+          "activate": "aktivieren",
+          "deactivate": "Deaktivieren"
         }
       }
     }]

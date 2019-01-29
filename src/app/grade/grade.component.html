@@ -60,7 +60,7 @@
 
     <ng-container matColumnDef="semester">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{messages.common.semester}}</th>
-      <td mat-cell *matCellDef="let element"> {{element.semester}}</td>
+      <td mat-cell *matCellDef="let element"> {{element.semester === 'winter' ? messages.common.winter : messages.common.summer}}</td>
     </ng-container>
 
     <ng-container matColumnDef="action">

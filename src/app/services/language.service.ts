@@ -49,7 +49,11 @@ export class LanguageService {
     const newLanguage = _.filter(LocalStorageService.getLanguages(), (language: any) => {
       return language.short === languageShort;
     });
-    this.currentLanguage = newLanguage[0];
+    if (newLanguage[0]) {
+      this.currentLanguage = newLanguage[0];
+    } else {
+      this.currentLanguage = LocalStorageService.getLanguages()[0];
+    }
     this.languageSource.next(this.currentLanguage);
   }
 

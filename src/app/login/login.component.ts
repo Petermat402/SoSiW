@@ -5,6 +5,9 @@ import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
 import {ErrorService} from '../services/error.service';
 import {LocalStorageService} from '../services/local-storage.service';
+import {MatDialog} from '@angular/material';
+import {EmailModalComponent} from '../email-modal/email-modal.component';
+import {ForgotPasswordModalComponent} from '../forgot-password-modal/forgot-password-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private languageService: LanguageService,
     private loginService: LoginService,
     private errorService: ErrorService,
-    private router: Router) {
+    private router: Router,
+    public forgotPassword: MatDialog) {
   }
 
   darkTheme = this.themeService.isDarkTheme;
@@ -76,6 +80,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.themeService.changeTheme();
     this.darkTheme = this.themeService.isDarkTheme;
     this.setBackground();
+  }
+
+  openForgotPasswordModal() {
+    return this.forgotPassword.open(ForgotPasswordModalComponent, {
+      width: '25vw',
+      data: this.messages
+    });
   }
 
   private setBackground() {

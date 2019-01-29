@@ -58,8 +58,8 @@ export class ApiService {
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
-  public getTeacherGrades() {
-    const url = `${backend}/grades/teacher?`;
+  public getTeacherGrades(academicYear: string, semester: string) {
+    const url = `${backend}/grades/teacher/${academicYear}/${semester}?`;
     return this.httpClient.get(url, ApiService.httpOptions);
   }
 
@@ -101,6 +101,43 @@ export class ApiService {
   public updateReminder(reminder: boolean) {
     const url = `${backend}/reminder`;
     return this.httpClient.put(url, {reminder: reminder}, ApiService.httpOptions);
+  }
+
+  public postChangedPasswords(newPassword: string, token: string) {
+    const url = `${backend}/recovery/password`;
+    return this.httpClient.post(url, {password: newPassword}, {
+      headers: new HttpHeaders().set('token', token).set('Content-Type', 'application/json')
+    });
+  }
+
+  public sendRecoveryPasswordRequest(login: string) {
+    const url = `${backend}/recovery`;
+    return this.httpClient.put(url, {login: login}, ApiService.httpOptions);
+  }
+
+  public checkUsername(username: string) {
+    const url = `${backend}/register/username/${username}`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
+  public postRegister(newUser) {
+    const url = `${backend}/register`;
+    return this.httpClient.post(url, newUser, ApiService.httpOptions);
+  }
+
+  public checkIfActiveUser(username: string) {
+    const url = `${backend}/active/${username}`;
+    return this.httpClient.get(url, ApiService.httpOptions);
+  }
+
+  public sendActivate(id: number) {
+    const url = `${backend}/activate`;
+    return this.httpClient.put(url, {id: id}, ApiService.httpOptions);
+  }
+
+  public sendDeactivate(id: number) {
+    const url = `${backend}/deactivate`;
+    return this.httpClient.put(url, {id: id}, ApiService.httpOptions);
   }
 
 }

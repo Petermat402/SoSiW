@@ -39,6 +39,7 @@ export class EmailService {
       addresses.replace(address.concat(','), '');
       addressesArray.push(address.toLowerCase());
     }
+    addressesArray.push(addresses);
     return addressesArray;
   }
 

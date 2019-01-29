@@ -1,0 +1,137 @@
+<div
+  fxLayout="row"
+  fxLayoutGap="10px">
+  <div fxFlex>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        {{messages.controlPanel.registerUser}}
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.controlPanel.username}}" [(ngModel)]="newUser.login" [formControl]="usernameFC">
+        <mat-error *ngIf="usernameFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.controlPanel.password}}" [(ngModel)]="newUser.password" [formControl]="passwordFC">
+        <mat-error *ngIf="passwordFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.common.name}}" [(ngModel)]="newUser.name" [formControl]="nameFC">
+        <mat-error *ngIf="nameFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.common.surname}}" [(ngModel)]="newUser.surname" [formControl]="surnameFC">
+        <mat-error *ngIf="surnameFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.common.pesel}}" [(ngModel)]="newUser.pesel" [formControl]="peselFC">
+        <mat-error *ngIf="peselFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.menu.emailTooltip}}" [(ngModel)]="newUser.email" [formControl]="emailFC">
+        <mat-error *ngIf="emailFC.hasError('required') || emailFC.hasError('email')">{{messages.common.validEmail}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.common.department}}" [(ngModel)]="newUser.departament" [formControl]="departmentFC">
+        <mat-error *ngIf="departmentFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="{{messages.common.languageWord}}" [(ngModel)]="newUser.language">
+          <mat-option *ngFor="let language of languagesShorts" [value]="language">
+            {{language}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="{{messages.common.role}}" [(ngModel)]="newUser.role">
+          <mat-option [value]="'S'">
+            {{messages.roles.student}}
+          </mat-option>
+          <mat-option [value]="'T'">
+            {{messages.roles.teacher}}
+          </mat-option>
+          <mat-option [value]="'A'">
+            {{messages.roles.administrator}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.common.group}}" [(ngModel)]="newUser.group">
+      </mat-form-field>
+      <div fxLayout="row">
+        <button fxFlex
+                fxFlexAlign="start"
+                mat-stroked-button
+                (click)="clearNewUser()">
+          {{messages.common.clear}}
+        </button>
+        <button
+          fxFlex
+          fxFlexAlign="end"
+          mat-stroked-button
+        (click)="sendNewUser()">
+          {{messages.common.confirm}}
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </div>
+
+  <div fxFlex>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        {{messages.controlPanel.activateDeactivate}}
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput
+               placeholder="{{messages.controlPanel.username}}" [(ngModel)]="activeUser.userLogin" [formControl]="userLoginFC">
+        <mat-error *ngIf="userLoginFC.hasError('required')">{{messages.common.isRequired}}</mat-error>
+      </mat-form-field>
+      <mat-card *ngIf="activeUser.messageActive === 'active'" class="green">
+        <mat-icon>done</mat-icon>
+        {{messages.common.active}}
+      </mat-card>
+      <mat-card *ngIf="activeUser.messageActive === 'inactive'" class="red">
+        <mat-icon>clear</mat-icon>
+        {{messages.common.inactive}}
+      </mat-card>
+      <div fxLayout="row">
+        <button fxFlex
+                fxFlexAlign="start"
+                mat-stroked-button
+                (click)="clearLogin()">
+          {{messages.common.clear}}
+        </button>
+        <button fxFlex
+                mat-stroked-button
+                (click)="checkLogin()">
+          {{messages.common.check}}
+        </button>
+        <button
+          fxFlex
+          fxFlexAlign="end"
+          mat-stroked-button
+          (click)="sendActivateDeactivate()">
+          {{activeUser.messageActive === 'inactive' ? messages.controlPanel.activate : messages.controlPanel.deactivate}}
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </div>
+
+  <div fxFlex>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        {{messages.controlPanel.addCourse}}
+      </mat-expansion-panel-header>
+
+    </mat-expansion-panel>
+  </div>
+
+
+</div>

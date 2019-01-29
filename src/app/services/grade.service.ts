@@ -33,8 +33,8 @@ export class GradeService {
     );
   }
 
-  getTeacherGrades() {
-    return this.apiService.getTeacherGrades().pipe(
+  getTeacherGrades(filterCriteria: {academicYear: string, semester: string}) {
+    return this.apiService.getTeacherGrades(filterCriteria.academicYear, filterCriteria.semester).pipe(
       map((objects: any) => {
         const grades: Grade[] = [];
         _.each(objects, backedGrades => {

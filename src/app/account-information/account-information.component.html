@@ -15,7 +15,7 @@
     <mat-divider></mat-divider>
     <mat-list-item>{{messages.common.department}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>{{messages.common.reminder}}</mat-list-item>
+    <mat-list-item *ngIf="user.role !== 'A'">{{messages.common.reminder}}</mat-list-item>
   </mat-list>
 
   <mat-list fxFlex>
@@ -34,7 +34,7 @@
     <mat-divider></mat-divider>
     <mat-list-item>{{user.departament}}</mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item><mat-checkbox [(ngModel)]="reminder"></mat-checkbox></mat-list-item>
+    <mat-list-item><mat-checkbox [(ngModel)]="reminder" *ngIf="user.role !== 'A'"></mat-checkbox></mat-list-item>
   </mat-list>
 
 </div>
